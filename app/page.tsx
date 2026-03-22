@@ -169,6 +169,26 @@ const academicProjects: Project[] = [
     tools:  ["SolidWorks", "FEA", "3D Printing", "Team Design", "Systems Integration"],
     images: ["/projects/ugv-3d.png"],
   },
+  {
+    num:    "02",
+    label:  "Academic",
+    color:  "bg-violet-500/10 text-violet-300 border-violet-500/20",
+    title:  "NACA 4412 Airfoil — CFD Analysis",
+    period: "2024",
+    desc:   "Computational fluid dynamics study of a NACA 4412 airfoil using ANSYS Fluent. Simulated lift and drag coefficients across multiple angles of attack (0°–15°). Compared three turbulence models — k-ε Realizable, k-ω SST, and Spalart-Allmaras — across coarse, medium, and fine mesh configurations. Results validated against published experimental data.",
+    tools:  ["ANSYS Fluent", "CFD", "Turbulence Modeling", "Mesh Generation", "Aerodynamics"],
+    images: ["/projects/naca4412-cfd.png"],
+  },
+  {
+    num:    "03",
+    label:  "Academic",
+    color:  "bg-violet-500/10 text-violet-300 border-violet-500/20",
+    title:  "Liquid Sloshing in Spherical Tank — CFD Analysis",
+    period: "2024",
+    desc:   "Multiphase CFD simulation of liquid sloshing (ballottement) inside a spherical tank using ANSYS Fluent with the Volume of Fluid (VOF) method. Studied free-surface dynamics under lateral excitation across multiple mesh refinements and turbulence models. Analyzed pressure loads and wave height response relevant to aerospace and automotive fluid containment.",
+    tools:  ["ANSYS Fluent", "CFD", "VOF Multiphase", "Turbulence Modeling", "Mesh Generation"],
+    images: ["/projects/ballottement-cfd.png"],
+  },
 ];
 
 const personalProjects: Project[] = [
