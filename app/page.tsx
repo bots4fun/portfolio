@@ -354,10 +354,10 @@ export default function Page() {
       {/* ══════════════════════════════════════════════════════════════════
           ABOUT
       ══════════════════════════════════════════════════════════════════ */}
-      <section id="about" className="py-28 px-8 md:px-14 border-t border-white/[0.04]">
+      <section id="about" className="py-16 px-8 md:px-14 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto">
 
-          <div className="reveal flex items-center gap-5 mb-20">
+          <div className="reveal flex items-center gap-5 mb-10">
             <span className="font-mono text-[11px] text-[hsl(28,100%,60%)] tracking-[0.2em]">01</span>
             <div className="h-px flex-1 bg-white/[0.06]" />
             <span className="font-mono text-[11px] text-[hsl(220,8%,36%)] uppercase tracking-widest">About</span>
@@ -444,10 +444,10 @@ export default function Page() {
       {/* ══════════════════════════════════════════════════════════════════
           PROJECTS
       ══════════════════════════════════════════════════════════════════ */}
-      <section id="projects" className="py-28 px-8 md:px-14 border-t border-white/[0.04]">
+      <section id="projects" className="py-16 px-8 md:px-14 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto">
 
-          <div className="reveal flex items-center gap-5 mb-20">
+          <div className="reveal flex items-center gap-5 mb-10">
             <span className="font-mono text-[11px] text-[hsl(28,100%,60%)] tracking-[0.2em]">02</span>
             <div className="h-px flex-1 bg-white/[0.06]" />
             <span className="font-mono text-[11px] text-[hsl(220,8%,36%)] uppercase tracking-widest">Projects</span>
@@ -458,7 +458,7 @@ export default function Page() {
             { heading:"Academic Projects", items:academicProjects },
             { heading:"Personal Projects", items:personalProjects },
           ].map(section => (
-            <div key={section.heading} className="mb-16">
+            <div key={section.heading} className="mb-8">
               <p className="reveal font-mono text-[11px] text-[hsl(28,100%,60%)] uppercase tracking-[0.18em] mb-8 flex items-center gap-4">
                 — {section.heading}
                 <span className="flex-1 h-px bg-white/[0.06]" />
@@ -531,10 +531,10 @@ export default function Page() {
       {/* ══════════════════════════════════════════════════════════════════
           CV / EXPERIENCE
       ══════════════════════════════════════════════════════════════════ */}
-      <section id="cv" className="py-28 px-8 md:px-14 border-t border-white/[0.04]">
+      <section id="cv" className="py-16 px-8 md:px-14 border-t border-white/[0.04]">
         <div className="max-w-6xl mx-auto">
 
-          <div className="reveal flex items-center gap-5 mb-20">
+          <div className="reveal flex items-center gap-5 mb-10">
             <span className="font-mono text-[11px] text-[hsl(28,100%,60%)] tracking-[0.2em]">03</span>
             <div className="h-px flex-1 bg-white/[0.06]" />
             <div className="flex items-center gap-5">
@@ -621,14 +621,14 @@ export default function Page() {
       {/* ══════════════════════════════════════════════════════════════════
           CONTACT
       ══════════════════════════════════════════════════════════════════ */}
-      <section id="contact" className="py-28 px-8 md:px-14 border-t border-white/[0.04] relative overflow-hidden">
+      <section id="contact" className="py-16 px-8 md:px-14 border-t border-white/[0.04] relative overflow-hidden">
 
         {/* Background accent */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[hsl(28,100%,60%)]/[0.04] rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto relative z-10">
 
-          <div className="reveal flex items-center gap-5 mb-20">
+          <div className="reveal flex items-center gap-5 mb-10">
             <span className="font-mono text-[11px] text-[hsl(28,100%,60%)] tracking-[0.2em]">04</span>
             <div className="h-px flex-1 bg-white/[0.06]" />
             <span className="font-mono text-[11px] text-[hsl(220,8%,36%)] uppercase tracking-widest">Contact</span>
@@ -638,7 +638,7 @@ export default function Page() {
             Looking forward<br />
             to meeting <span className="gradient-text-orange">you.</span>
           </h2>
-          <p className="reveal reveal-delay-1 text-[16px] leading-7 text-[hsl(220,8%,52%)] mb-16 max-w-lg">
+          <p className="reveal reveal-delay-1 text-[16px] leading-7 text-[hsl(220,8%,52%)] mb-8 max-w-lg">
             Whether it's a project, a thesis opportunity, or just a conversation — reach out anytime.
           </p>
 
