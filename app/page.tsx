@@ -100,7 +100,7 @@ const experience = [
   },
 ];
 
-const projects = [
+const workProjects = [
   {
     num:    "01",
     label:  "Academic",
@@ -110,8 +110,11 @@ const projects = [
     desc:   "Designed and manufactured a complete payload system for an Unmanned Ground Vehicle for the NGCP competition. Integrated with a multidisciplinary team across the full development cycle.",
     tools:  ["SolidWorks", "FEA", "3D Printing", "Analysis", "Teamwork"],
   },
+];
+
+const personalProjects = [
   {
-    num:    "02",
+    num:    "01",
     label:  "Personal",
     color:  "bg-amber-500/10 text-amber-300 border-amber-500/20",
     title:  "Arduino Door Lock Mechanism",
@@ -606,28 +609,68 @@ export default function Page() {
             </a>
           </div>
 
-          {/* Engineering */}
-          <div className="grid gap-5 md:grid-cols-2 mb-16">
-            {projects.map((p) => (
-              <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-7 flex flex-col`}>
-                <div className="flex items-start justify-between mb-5">
-                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
-                    {p.label}
-                  </span>
-                  <span className="text-3xl font-black text-[hsl(222,25%,18%)] select-none leading-none">
-                    {p.num}
-                  </span>
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-3">{p.title}</h3>
-                <p className="text-sm text-[hsl(215,15%,55%)] leading-6 flex-1">{p.desc}</p>
-                <div className="mt-6 pt-5 border-t border-[hsl(222,25%,16%)] flex flex-wrap gap-2">
-                  {p.tools.map((t) => (
-                    <span key={t} className="text-xs text-[hsl(215,15%,50%)] font-medium">{t}</span>
-                  ))}
-                </div>
-                <p className="mt-2 text-xs text-[hsl(215,15%,38%)]">{p.period}</p>
-              </article>
-            ))}
+          {/* Previous Work Projects */}
+          <div className="mb-14">
+            <div className="flex items-center gap-4 mb-7">
+              <p className="text-xs font-medium text-[hsl(215,15%,40%)] uppercase tracking-widest shrink-0">
+                Previous Work Projects
+              </p>
+              <div className="flex-1 h-px bg-[hsl(222,25%,16%)]" />
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {workProjects.map((p) => (
+                <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-7 flex flex-col`}>
+                  <div className="flex items-start justify-between mb-5">
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
+                      {p.label}
+                    </span>
+                    <span className="text-3xl font-black text-[hsl(222,25%,18%)] select-none leading-none">
+                      {p.num}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-3">{p.title}</h3>
+                  <p className="text-sm text-[hsl(215,15%,55%)] leading-6 flex-1">{p.desc}</p>
+                  <div className="mt-6 pt-5 border-t border-[hsl(222,25%,16%)] flex flex-wrap gap-2">
+                    {p.tools.map((t) => (
+                      <span key={t} className="text-xs text-[hsl(215,15%,50%)] font-medium">{t}</span>
+                    ))}
+                  </div>
+                  <p className="mt-2 text-xs text-[hsl(215,15%,38%)]">{p.period}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* Personal Projects */}
+          <div className="mb-16">
+            <div className="flex items-center gap-4 mb-7">
+              <p className="text-xs font-medium text-[hsl(215,15%,40%)] uppercase tracking-widest shrink-0">
+                Personal Projects
+              </p>
+              <div className="flex-1 h-px bg-[hsl(222,25%,16%)]" />
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {personalProjects.map((p) => (
+                <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-7 flex flex-col`}>
+                  <div className="flex items-start justify-between mb-5">
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
+                      {p.label}
+                    </span>
+                    <span className="text-3xl font-black text-[hsl(222,25%,18%)] select-none leading-none">
+                      {p.num}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-3">{p.title}</h3>
+                  <p className="text-sm text-[hsl(215,15%,55%)] leading-6 flex-1">{p.desc}</p>
+                  <div className="mt-6 pt-5 border-t border-[hsl(222,25%,16%)] flex flex-wrap gap-2">
+                    {p.tools.map((t) => (
+                      <span key={t} className="text-xs text-[hsl(215,15%,50%)] font-medium">{t}</span>
+                    ))}
+                  </div>
+                  <p className="mt-2 text-xs text-[hsl(215,15%,38%)]">{p.period}</p>
+                </article>
+              ))}
+            </div>
           </div>
 
           {/* 3D Printing */}
