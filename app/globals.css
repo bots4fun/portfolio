@@ -6,9 +6,14 @@
 }
 
 html, body {
-  /* Warm off-white + ink */
   background-color: hsl(38, 35%, 96%);
   color: hsl(220, 20%, 10%);
+}
+
+/* Subtle dot grid for main content */
+.dot-grid {
+  background-image: radial-gradient(circle, hsla(220, 20%, 30%, 0.07) 1px, transparent 1px);
+  background-size: 26px 26px;
 }
 
 /* Page-section enter */

@@ -4,21 +4,13 @@ import { useState } from "react";
 
 type PageKey = "about" | "cv" | "projects" | "contact";
 
-// ─── COLORS (warm off-white + ink theme) ──────────────────────────────────
-// bg base:   hsl(38, 35%, 96%)
-// card:      hsl(38, 28%, 99%)
-// border:    hsl(35, 20%, 87%)
-// text:      hsl(220, 20%, 10%)
-// muted:     hsl(220, 10%, 40%)
-// accent:    hsl(220, 65%, 35%)  deep ink blue
-// ─────────────────────────────────────────────────────────────────────────
-
+// ─── COLORS (warm off-white + ink) ────────────────────────────────────────
 const C = {
   bg:      "bg-[hsl(38,35%,96%)]",
   card:    "bg-[hsl(38,28%,99%)]",
   border:  "border-[hsl(35,20%,87%)]",
   text:    "text-[hsl(220,20%,10%)]",
-  muted:   "text-[hsl(220,10%,40%)]",
+  muted:   "text-[hsl(220,10%,42%)]",
   accent:  "text-[hsl(220,65%,35%)]",
   accentBg:"bg-[hsl(220,65%,35%)]",
 };
@@ -109,50 +101,50 @@ const workProjects: Project[] = [
   {
     num:    "01",
     label:  "CLA-VAL",
-    color:  "bg-blue-100 text-blue-700 border-blue-200",
+    color:  "bg-indigo-100 text-indigo-700 border-indigo-200",
     title:  "Manifold — Pilot Block",
     period: "2025",
-    desc:   "Aluminum hog-out manifold used to control the piston of a main valve via solenoids and pressure regulators, allowing or restricting flow in the system.",
+    desc:   "Aluminum hog-out manifold used to control the piston of a main valve via solenoids and pressure regulators. Designed for compactness and ease of assembly in an aircraft refueling truck.",
     tools:  ["SolidWorks", "GD&T", "Aluminum Machining", "Fluid Systems"],
     images: ["/projects/manifold-3d.png"],
   },
   {
     num:    "02",
     label:  "CLA-VAL",
-    color:  "bg-blue-100 text-blue-700 border-blue-200",
+    color:  "bg-indigo-100 text-indigo-700 border-indigo-200",
     title:  "Bypass Valve — 381GF",
     period: "2023",
-    desc:   "Bypass valve assembly combining aluminum hog-outs and castings. Opens once system pressure reaches a pre-set value — spring and set-screw dictate the cracking pressure.",
-    tools:  ["SolidWorks", "Assembly Design", "GD&T", "Pressure Systems"],
+    desc:   "New design iteration of a differential pressure bypass valve for aircraft refueling applications. Focused on improving manufacturability and performance under dynamic pressure conditions.",
+    tools:  ["SolidWorks", "GD&T", "Fluid Dynamics", "Valve Design"],
     images: ["/projects/bypass-3d.png"],
   },
   {
     num:    "03",
     label:  "CLA-VAL",
-    color:  "bg-blue-100 text-blue-700 border-blue-200",
+    color:  "bg-indigo-100 text-indigo-700 border-indigo-200",
     title:  "Test Fixture — 1626M",
     period: "2024",
-    desc:   "Modular test fixture covering valve sizes from 6 in to 27 in. Hermetically seals valves via a custom rubber insert and adjustable clamp. Composed of aluminum parts and off-the-shelf hardware.",
-    tools:  ["SolidWorks", "Fixture Design", "Testing", "Aluminum Machining"],
+    desc:   "Custom test fixture designed to validate the performance of the 1626M valve under simulated operating conditions. Ensured repeatable clamping and alignment for consistent test results.",
+    tools:  ["SolidWorks", "FEA", "GD&T", "Testing & Validation"],
     images: ["/projects/fixture-3d.png"],
   },
   {
     num:    "04",
     label:  "CLA-VAL",
-    color:  "bg-blue-100 text-blue-700 border-blue-200",
+    color:  "bg-indigo-100 text-indigo-700 border-indigo-200",
     title:  "Spring Compression Tool — X149",
     period: "2024",
-    desc:   "2-in-1 Delrin compression tool for disassembling and reassembling pistons across two different product lines. Compact design keeps all parts attached to avoid loss — built for field use.",
-    tools:  ["SolidWorks", "Delrin", "Tool Design", "GD&T"],
+    desc:   "Specialized tool to safely compress and hold the internal spring of the X149 valve during assembly and disassembly. Designed to reduce assembly time and improve technician safety.",
+    tools:  ["SolidWorks", "Tooling Design", "GD&T", "Assembly"],
     images: ["/projects/spring-tool-1.png", "/projects/spring-tool-2.png"],
   },
   {
     num:    "05",
     label:  "CLA-VAL",
-    color:  "bg-blue-100 text-blue-700 border-blue-200",
+    color:  "bg-indigo-100 text-indigo-700 border-indigo-200",
     title:  "Wire Rope Hub — Press Master",
     period: "2024",
-    desc:   "Custom aluminum hog-out hub mounted on a 200-ton press shaft via woodruff keys, set screws, and clamping force. Designed to increase shaft diameter and prevent wire cable failure due to bending radius.",
+    desc:   "Hub component for a wire rope press machine used in internal assembly operations. Designed for durability and precise fitment within the press assembly.",
     tools:  ["SolidWorks", "GD&T", "Aluminum Machining", "Mechanical Design"],
     images: ["/projects/hub-3d.png", "/projects/hub-2.png"],
   },
@@ -174,7 +166,7 @@ const academicProjects: Project[] = [
     label:  "Academic",
     color:  "bg-violet-100 text-violet-700 border-violet-200",
     title:  "CFD Simulations — ANSYS Fluent",
-    period: "2026",
+    period: "2024",
     desc:   "Two CFD studies using ANSYS Fluent. (1) NACA 4412 airfoil: simulated lift and drag across multiple angles of attack (0°–15°), comparing k-ε Realizable, k-ω SST, and Spalart-Allmaras turbulence models on coarse, medium, and fine meshes. (2) Liquid sloshing (ballottement) in a spherical tank: modeled free-surface dynamics under lateral excitation using the VOF multiphase method across mesh refinements and turbulence models.",
     tools:  ["ANSYS Fluent", "CFD", "VOF Multiphase", "Turbulence Modeling", "Mesh Generation", "Aerodynamics"],
     images: ["/projects/naca4412-cfd.png", "/projects/ballottement-cfd.png"],
@@ -190,7 +182,6 @@ const personalProjects: Project[] = [
     period: "Jul – Aug 2021",
     desc:   "Designed and built a custom door lock mechanism combining Arduino control logic with 3D-printed mechanical components — concept to working prototype.",
     tools:  ["Arduino", "3D Printing", "CAD", "Embedded Systems"],
-    // images: ["/projects/doorlock-1.jpg"],
   },
   {
     num:    "02",
@@ -200,40 +191,39 @@ const personalProjects: Project[] = [
     period: "Ongoing",
     desc:   "Designing and printing mechanical parts, enclosures, and functional prototypes. Each project covers the full loop from CAD model to physical object.",
     tools:  ["3D Printing", "CAD", "Fusion 360", "Prototyping"],
-    // images: ["/projects/print-1.jpg", "/projects/print-2.jpg"],
   },
 ];
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────
 
 export default function Page() {
-  const [page, setPage]   = useState<PageKey>("about");
-  const [mob, setMob]     = useState(false);
-  const [lb, setLb]       = useState<string | null>(null);
-
-  const nav: { id: PageKey; label: string }[] = [
-    { id: "about",    label: "About" },
-    { id: "cv",       label: "CV" },
-    { id: "projects", label: "Projects" },
-    { id: "contact",  label: "Contact" },
-  ];
+  const [page, setPage] = useState<PageKey>("about");
+  const [mob, setMob]   = useState(false);
+  const [lb, setLb]     = useState<string | null>(null);
 
   const go = (id: PageKey) => { setPage(id); setMob(false); };
 
-  return (
-    <div className={`min-h-screen ${C.bg} ${C.text}`}>
+  const navItems: { id: PageKey; label: string; num: string }[] = [
+    { id: "about",    label: "About",    num: "01" },
+    { id: "cv",       label: "CV",       num: "02" },
+    { id: "projects", label: "Projects", num: "03" },
+    { id: "contact",  label: "Contact",  num: "04" },
+  ];
 
-      {/* Lightbox */}
+  return (
+    <div className={`${C.bg} ${C.text} min-h-screen`}>
+
+      {/* ── LIGHTBOX ──────────────────────────────────────────────────────── */}
       {lb && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[hsl(220,20%,5%)]/85 backdrop-blur-md p-4"
           onClick={() => setLb(null)}
         >
-          <div className="relative" onClick={(e) => e.stopPropagation()}>
-            <img src={lb} alt="" className="max-h-[88vh] max-w-[88vw] object-contain rounded-lg" />
+          <div className="relative" onClick={e => e.stopPropagation()}>
+            <img src={lb} alt="" className="max-h-[88vh] max-w-[88vw] object-contain rounded-xl shadow-2xl" />
             <button
               onClick={() => setLb(null)}
-              className={`absolute -top-10 right-0 text-sm ${C.muted} hover:text-[hsl(220,20%,8%)] transition-colors`}
+              className="absolute -top-10 right-0 text-sm text-[hsl(220,10%,60%)] hover:text-white transition-colors"
             >
               Close ✕
             </button>
@@ -241,589 +231,561 @@ export default function Page() {
         </div>
       )}
 
-      {/* ── HEADER ─────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-30 border-b border-[hsl(35,20%,87%)] bg-[hsl(38,35%,96%)]/90 backdrop-blur-xl">
-        <div className="mx-auto max-w-5xl px-6 h-14 flex items-center justify-between">
+      {/* ── SIDEBAR (desktop) ─────────────────────────────────────────────── */}
+      <aside className={`hidden lg:flex flex-col fixed left-0 top-0 h-screen w-[220px] ${C.card} border-r ${C.border} z-20`}>
 
-          <button
-            onClick={() => go("about")}
-            className="text-sm font-semibold text-[hsl(220,20%,10%)] hover:text-[hsl(220,65%,35%)] transition-colors"
-          >
-            Victor Garnier
-          </button>
-
-          <nav className="hidden md:flex items-center gap-1">
-            {nav.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => go(item.id)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                  page === item.id
-                    ? "bg-[hsl(220,65%,35%)]/10 text-[hsl(220,65%,35%)]"
-                    : "text-[hsl(220,10%,42%)] hover:text-[hsl(220,20%,10%)] hover:bg-[hsl(220,20%,10%)]/5"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-            <a
-              href="/Victor_Garnier_CV.pdf"
-              className="ml-2 px-4 py-1.5 rounded-full text-sm font-medium border border-[hsl(35,20%,80%)] text-[hsl(220,10%,42%)] hover:border-[hsl(220,65%,35%)] hover:text-[hsl(220,65%,35%)] transition-colors"
-            >
-              ↓ CV
-            </a>
-          </nav>
-
-          <button
-            onClick={() => setMob(!mob)}
-            className="flex flex-col gap-1.5 p-1 md:hidden"
-            aria-label="Menu"
-          >
-            <span className={`block h-px w-5 bg-[hsl(220,20%,20%)]/70 transition-transform origin-center ${mob ? "translate-y-[6.5px] rotate-45" : ""}`} />
-            <span className={`block h-px w-5 bg-[hsl(220,20%,20%)]/70 transition-opacity ${mob ? "opacity-0" : ""}`} />
-            <span className={`block h-px w-5 bg-[hsl(220,20%,20%)]/70 transition-transform origin-center ${mob ? "-translate-y-[6.5px] -rotate-45" : ""}`} />
+        {/* Top — name */}
+        <div className="px-8 pt-10 pb-8 border-b border-[hsl(35,20%,87%)]">
+          <button onClick={() => go("about")} className="text-left group">
+            <p className="font-black text-[hsl(220,20%,8%)] text-[22px] leading-tight tracking-tight group-hover:text-[hsl(220,65%,35%)] transition-colors">
+              Victor<br />Garnier
+            </p>
+            <p className="font-mono text-[10px] text-[hsl(220,10%,55%)] mt-2 uppercase tracking-widest">
+              Mech. Engineer
+            </p>
           </button>
         </div>
 
-        {mob && (
-          <div className="border-t border-[hsl(35,20%,87%)] px-6 py-4 md:hidden space-y-1">
-            {nav.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => go(item.id)}
-                className={`block w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  page === item.id ? "bg-[hsl(220,65%,35%)]/8 text-[hsl(220,65%,35%)]" : "text-[hsl(220,10%,42%)]"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-            <a href="/Victor_Garnier_CV.pdf" className="block px-3 py-2 text-sm text-[hsl(220,10%,42%)]">↓ CV</a>
+        {/* Mid — nav */}
+        <nav className="flex flex-col gap-0.5 px-4 py-6 flex-1">
+          {navItems.map(item => (
+            <button
+              key={item.id}
+              onClick={() => go(item.id)}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-left group ${
+                page === item.id
+                  ? "bg-[hsl(220,65%,35%)]/10 text-[hsl(220,65%,35%)]"
+                  : "text-[hsl(220,10%,45%)] hover:text-[hsl(220,20%,10%)] hover:bg-[hsl(220,20%,10%)]/5"
+              }`}
+            >
+              <span className={`font-mono text-[10px] w-5 ${page === item.id ? "text-[hsl(220,65%,35%)]" : "text-[hsl(220,10%,62%)]"}`}>
+                {item.num}
+              </span>
+              {item.label}
+              {page === item.id && (
+                <span className="ml-auto h-1.5 w-1.5 rounded-full bg-[hsl(220,65%,35%)]" />
+              )}
+            </button>
+          ))}
+        </nav>
+
+        {/* Decorative engineering detail */}
+        <div className="px-8 pb-6 opacity-25 pointer-events-none select-none">
+          <svg viewBox="0 0 80 80" fill="none" className="w-14 h-14">
+            <circle cx="40" cy="40" r="32" stroke="hsl(220,65%,35%)" strokeWidth="0.7" />
+            <circle cx="40" cy="40" r="20" stroke="hsl(220,65%,35%)" strokeWidth="1" />
+            <circle cx="40" cy="40" r="9"  stroke="hsl(220,65%,35%)" strokeWidth="1.2" />
+            <circle cx="40" cy="40" r="2"  fill="hsl(220,65%,35%)" />
+            <line x1="2"  y1="40" x2="78" y2="40" stroke="hsl(220,65%,35%)" strokeWidth="0.4" strokeOpacity="0.5" />
+            <line x1="40" y1="2"  x2="40" y2="78" stroke="hsl(220,65%,35%)" strokeWidth="0.4" strokeOpacity="0.5" />
+            <circle cx="40" cy="8"  r="3" stroke="hsl(220,65%,35%)" strokeWidth="0.8" />
+            <circle cx="40" cy="72" r="3" stroke="hsl(220,65%,35%)" strokeWidth="0.8" />
+            <circle cx="8"  cy="40" r="3" stroke="hsl(220,65%,35%)" strokeWidth="0.8" />
+            <circle cx="72" cy="40" r="3" stroke="hsl(220,65%,35%)" strokeWidth="0.8" />
+          </svg>
+        </div>
+
+        {/* Bottom — status + CV */}
+        <div className="px-8 pb-8 pt-4 border-t border-[hsl(35,20%,87%)] space-y-2.5">
+          <div className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-mono text-[10px] text-[hsl(220,10%,52%)] uppercase tracking-wider">Available</span>
           </div>
-        )}
+          <p className="font-mono text-[10px] text-[hsl(220,10%,58%)]">Lausanne · CH</p>
+          <a
+            href="/Victor_Garnier_CV.pdf"
+            className="block font-semibold text-xs text-[hsl(220,65%,35%)] hover:text-[hsl(220,65%,28%)] transition-colors"
+          >
+            ↓ Download CV
+          </a>
+        </div>
+      </aside>
+
+      {/* ── MOBILE HEADER ─────────────────────────────────────────────────── */}
+      <header className={`lg:hidden fixed top-0 inset-x-0 z-30 h-14 flex items-center justify-between px-6 border-b border-[hsl(35,20%,87%)] bg-[hsl(38,35%,96%)]/90 backdrop-blur-xl`}>
+        <button onClick={() => go("about")} className="font-black text-sm text-[hsl(220,20%,8%)]">
+          Victor Garnier
+        </button>
+        <button onClick={() => setMob(!mob)} className="flex flex-col gap-1.5 p-1" aria-label="Menu">
+          <span className={`block h-px w-5 bg-[hsl(220,20%,20%)]/70 transition-transform origin-center ${mob ? "translate-y-[6.5px] rotate-45" : ""}`} />
+          <span className={`block h-px w-5 bg-[hsl(220,20%,20%)]/70 transition-opacity ${mob ? "opacity-0" : ""}`} />
+          <span className={`block h-px w-5 bg-[hsl(220,20%,20%)]/70 transition-transform origin-center ${mob ? "-translate-y-[6.5px] -rotate-45" : ""}`} />
+        </button>
       </header>
 
-      {/* ── ABOUT ──────────────────────────────────────────────────────── */}
-      {page === "about" && (
-        <div>
-          {/* Hero */}
-          <section className="relative overflow-hidden">
-            {/* Top accent line */}
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[hsl(220,65%,35%)]/40 to-transparent" />
-            {/* Soft radial glow */}
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,hsl(220,65%,35%,0.05),transparent)]" />
+      {mob && (
+        <div className={`lg:hidden fixed inset-0 z-20 pt-14 ${C.bg} flex flex-col px-6 py-8 space-y-1`}>
+          {navItems.map(item => (
+            <button
+              key={item.id}
+              onClick={() => go(item.id)}
+              className={`flex items-center gap-4 px-4 py-3.5 rounded-xl text-sm font-medium transition-all ${
+                page === item.id
+                  ? "bg-[hsl(220,65%,35%)]/10 text-[hsl(220,65%,35%)]"
+                  : "text-[hsl(220,10%,42%)]"
+              }`}
+            >
+              <span className="font-mono text-[10px] text-[hsl(220,10%,58%)]">{item.num}</span>
+              {item.label}
+            </button>
+          ))}
+          <div className="pt-6 border-t border-[hsl(35,20%,87%)]">
+            <a href="/Victor_Garnier_CV.pdf" className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-[hsl(220,65%,35%)]">
+              ↓ Download CV
+            </a>
+          </div>
+        </div>
+      )}
 
-            <div className="mx-auto max-w-5xl px-6 pt-16 pb-16 md:pt-24 md:pb-20 grid md:grid-cols-[1fr_300px] lg:grid-cols-[1fr_360px] gap-10 items-center">
-              {/* Left — content */}
-              <div>
-                <div className="fade-in-up inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[hsl(220,65%,35%)]/20 bg-[hsl(220,65%,35%)]/8 mb-8">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[hsl(220,65%,35%)] animate-pulse" />
-                  <span className="text-xs font-medium text-[hsl(220,65%,35%)]">
-                    Mechanical Engineer · Lausanne, Switzerland
-                  </span>
-                </div>
+      {/* ── MAIN ──────────────────────────────────────────────────────────── */}
+      <main className="lg:ml-[220px] min-h-screen dot-grid">
 
-                <h1
-                  className="fade-in-up d1 gradient-text font-bold leading-none tracking-tight"
-                  style={{ fontSize: "clamp(44px, 7.5vw, 96px)", letterSpacing: "-0.025em" }}
+        {/* ════════════════════ ABOUT ═══════════════════════════════════════ */}
+        {page === "about" && (
+          <div className="fade-in-up pt-14 lg:pt-0">
+
+            {/* Hero */}
+            <section className="relative px-8 md:px-14 pt-14 pb-14 border-b border-[hsl(35,20%,87%)] overflow-hidden">
+              {/* Big background number */}
+              <span
+                className="absolute right-6 bottom-0 font-black leading-none select-none pointer-events-none text-[hsl(220,20%,10%)]/[0.04]"
+                style={{ fontSize: "clamp(120px, 18vw, 220px)" }}
+                aria-hidden
+              >
+                01
+              </span>
+
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] tracking-widest uppercase mb-8">
+                01 / About
+              </p>
+
+              <h1
+                className="gradient-text font-black leading-none tracking-tight mb-6"
+                style={{ fontSize: "clamp(56px, 9vw, 116px)", letterSpacing: "-0.03em" }}
+              >
+                Victor<br />Garnier
+              </h1>
+
+              <div className="flex flex-wrap items-center gap-3 mb-7">
+                <span className="inline-flex items-center gap-2 text-sm text-[hsl(220,10%,42%)]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Available for new opportunities
+                </span>
+                <span className="text-[hsl(35,20%,78%)]">·</span>
+                <span className="font-mono text-[12px] text-[hsl(220,10%,52%)]">Lausanne, Switzerland</span>
+              </div>
+
+              <p className="max-w-lg text-[16px] leading-7 text-[hsl(220,10%,40%)] mb-9">
+                Mechanical Engineer with a B.Sc. from Cal Poly Pomona and 2 years designing
+                aircraft refueling systems at CLA-VAL. Currently pursuing M.Sc. at HES-SO Master.
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => go("contact")}
+                  className="h-10 px-6 rounded-full bg-[hsl(220,65%,35%)] hover:bg-[hsl(220,65%,29%)] text-white text-sm font-semibold transition-colors shadow-md shadow-[hsl(220,65%,35%)]/20"
                 >
-                  Victor
-                  <br />
-                  Garnier
-                </h1>
-
-                <p className="fade-in-up d2 mt-7 max-w-md text-[16px] leading-7 text-[hsl(220,10%,40%)]">
-                  Mechanical Engineer with a B.Sc. from Cal Poly Pomona and 2 years of industry
-                  experience designing aircraft refueling systems at CLA-VAL.
-                </p>
-
-                <div className="fade-in-up d3 mt-9 flex flex-wrap gap-3">
-                  <button
-                    onClick={() => go("contact")}
-                    className="h-10 px-6 rounded-full bg-[hsl(220,65%,35%)] hover:bg-[hsl(220,65%,30%)] text-white text-sm font-semibold transition-colors shadow-lg shadow-[hsl(220,65%,35%)]/20"
-                  >
-                    Get in touch
-                  </button>
-                  <a
-                    href="/Victor_Garnier_CV.pdf"
-                    className="h-10 px-6 rounded-full border border-[hsl(35,20%,80%)] text-[hsl(220,20%,25%)] text-sm font-medium hover:border-[hsl(220,65%,35%)] hover:text-[hsl(220,65%,35%)] transition-colors flex items-center"
-                  >
-                    Download CV
-                  </a>
-                </div>
+                  Get in touch
+                </button>
+                <button
+                  onClick={() => go("projects")}
+                  className="h-10 px-6 rounded-full border border-[hsl(35,20%,80%)] text-[hsl(220,20%,22%)] text-sm font-medium hover:border-[hsl(220,65%,35%)] hover:text-[hsl(220,65%,35%)] transition-colors"
+                >
+                  View projects →
+                </button>
               </div>
+            </section>
 
-              {/* Right — engineering SVG illustration */}
-              <div className="hidden md:flex items-center justify-center fade-in-up d4">
-                <svg viewBox="0 0 320 300" fill="none" className="w-full max-w-xs opacity-95" aria-hidden>
-                  {/* Outer ring */}
-                  <circle cx="160" cy="150" r="118" stroke="hsl(220,65%,35%)" strokeWidth="0.6" strokeOpacity="0.12" />
-                  {/* PCD circle */}
-                  <circle cx="160" cy="150" r="80" stroke="hsl(220,65%,35%)" strokeWidth="0.8" strokeOpacity="0.22" />
-                  {/* Mid ring */}
-                  <circle cx="160" cy="150" r="50" stroke="hsl(220,65%,35%)" strokeWidth="1" strokeOpacity="0.3" />
-                  {/* Bore / center circle */}
-                  <circle cx="160" cy="150" r="22" stroke="hsl(220,65%,35%)" strokeWidth="1.5" strokeOpacity="0.55" fill="hsl(220,65%,35%)" fillOpacity="0.05" />
-                  {/* Center point */}
-                  <circle cx="160" cy="150" r="3" fill="hsl(220,65%,35%)" fillOpacity="0.75" />
-                  {/* Center crosshairs */}
-                  <line x1="30" y1="150" x2="290" y2="150" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.18" />
-                  <line x1="160" y1="15" x2="160" y2="285" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.18" />
-                  {/* 45° construction lines */}
-                  <line x1="66" y1="56" x2="254" y2="244" stroke="hsl(220,65%,35%)" strokeWidth="0.3" strokeOpacity="0.09" />
-                  <line x1="254" y1="56" x2="66" y2="244" stroke="hsl(220,65%,35%)" strokeWidth="0.3" strokeOpacity="0.09" />
-                  {/* Bolt holes × 4 at 90° on PCD */}
-                  <circle cx="160" cy="70" r="7" stroke="hsl(220,65%,35%)" strokeWidth="1" strokeOpacity="0.5" />
-                  <line x1="155" y1="70" x2="165" y2="70" stroke="hsl(220,65%,35%)" strokeWidth="0.75" strokeOpacity="0.65" />
-                  <line x1="160" y1="65" x2="160" y2="75" stroke="hsl(220,65%,35%)" strokeWidth="0.75" strokeOpacity="0.65" />
-                  <circle cx="160" cy="230" r="7" stroke="hsl(220,65%,35%)" strokeWidth="1" strokeOpacity="0.5" />
-                  <line x1="155" y1="230" x2="165" y2="230" stroke="hsl(220,65%,35%)" strokeWidth="0.75" strokeOpacity="0.65" />
-                  <line x1="160" y1="225" x2="160" y2="235" stroke="hsl(220,65%,35%)" strokeWidth="0.75" strokeOpacity="0.65" />
-                  <circle cx="80" cy="150" r="7" stroke="hsl(220,65%,35%)" strokeWidth="1" strokeOpacity="0.5" />
-                  <line x1="75" y1="150" x2="85" y2="150" stroke="hsl(220,65%,35%)" strokeWidth="0.75" strokeOpacity="0.65" />
-                  <line x1="80" y1="145" x2="80" y2="155" stroke="hsl(220,65%,35%)" strokeWidth="0.75" strokeOpacity="0.65" />
-                  <circle cx="240" cy="150" r="7" stroke="hsl(220,65%,35%)" strokeWidth="1" strokeOpacity="0.5" />
-                  <line x1="235" y1="150" x2="245" y2="150" stroke="hsl(220,65%,35%)" strokeWidth="0.75" strokeOpacity="0.65" />
-                  <line x1="240" y1="145" x2="240" y2="155" stroke="hsl(220,65%,35%)" strokeWidth="0.75" strokeOpacity="0.65" />
-                  {/* Dimension line — vertical left */}
-                  <line x1="22" y1="32" x2="22" y2="268" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.22" />
-                  <line x1="18" y1="42" x2="22" y2="32" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.3" />
-                  <line x1="26" y1="42" x2="22" y2="32" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.3" />
-                  <line x1="18" y1="258" x2="22" y2="268" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.3" />
-                  <line x1="26" y1="258" x2="22" y2="268" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.3" />
-                  <line x1="22" y1="32" x2="42" y2="32" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.15" strokeDasharray="3 2" />
-                  <line x1="22" y1="268" x2="42" y2="268" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.15" strokeDasharray="3 2" />
-                  {/* Small secondary circle top-right corner */}
-                  <circle cx="286" cy="42" r="24" stroke="hsl(220,65%,35%)" strokeWidth="0.6" strokeOpacity="0.13" />
-                  <circle cx="286" cy="42" r="12" stroke="hsl(220,65%,35%)" strokeWidth="0.8" strokeOpacity="0.2" />
-                  <circle cx="286" cy="42" r="3.5" stroke="hsl(220,65%,35%)" strokeWidth="1" strokeOpacity="0.4" />
-                  <circle cx="286" cy="42" r="1.5" fill="hsl(220,65%,35%)" fillOpacity="0.5" />
-                  {/* Leader line from secondary circle */}
-                  <line x1="268" y1="58" x2="248" y2="78" stroke="hsl(220,65%,35%)" strokeWidth="0.5" strokeOpacity="0.15" strokeDasharray="3 2" />
-                </svg>
-              </div>
-            </div>
-          </section>
-
-          {/* Stats */}
-          <section className="border-y border-[hsl(35,20%,87%)]">
-            <div className="mx-auto max-w-5xl px-6">
-              <dl className="flex divide-x divide-[hsl(35,20%,87%)]">
+            {/* Stats strip */}
+            <section className="border-b border-[hsl(35,20%,87%)] bg-[hsl(38,28%,99%)]">
+              <dl className="px-8 md:px-14 flex flex-wrap">
                 {[
                   { value: "2 yrs",   label: "Industry experience" },
                   { value: "FR / EN", label: "Bilingual" },
                   { value: "FE Exam", label: "NCEES Certified" },
                   { value: "M.Sc.",   label: "HES-SO Lausanne" },
-                ].map((s) => (
-                  <div key={s.label} className="flex-1 px-6 py-7 first:pl-0 last:pr-0">
-                    <dt className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-1">
-                      {s.label}
-                    </dt>
-                    <dd className="text-2xl font-bold text-[hsl(220,20%,8%)]">{s.value}</dd>
+                ].map((s, i) => (
+                  <div
+                    key={s.label}
+                    className={`flex-1 min-w-[120px] py-6 px-6 ${i !== 0 ? "border-l border-[hsl(35,20%,87%)]" : ""}`}
+                  >
+                    <dd className="text-[22px] font-black text-[hsl(220,20%,8%)] leading-tight">{s.value}</dd>
+                    <dt className="font-mono text-[10px] text-[hsl(220,10%,54%)] uppercase tracking-wider mt-1">{s.label}</dt>
                   </div>
                 ))}
               </dl>
-            </div>
-          </section>
+            </section>
 
-          {/* About + Info */}
-          <section className="mx-auto max-w-5xl px-6 py-16 grid gap-10 lg:grid-cols-[1fr_280px]">
-            <div>
-              <h2 className="text-xl font-semibold text-[hsl(220,20%,8%)] mb-5">About me</h2>
-              <div className="space-y-4 text-[15px] leading-7 text-[hsl(220,10%,40%)]">
-                <p>
-                  I'm a mechanical engineer with a B.Sc. from <span className="text-[hsl(220,20%,14%)]">Cal Poly Pomona</span> (California, USA) — a polytechnic university with a strong emphasis on hands-on engineering education. My degree gave me a rigorous foundation in fluid dynamics, thermodynamics, machine design, materials science, and structural analysis.
+            {/* Bio + Info cards */}
+            <section className="px-8 md:px-14 py-14 grid lg:grid-cols-[1fr_260px] gap-12">
+              <div>
+                <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] uppercase tracking-widest mb-6">
+                  — Who I am
                 </p>
-                <p>
-                  After graduating, I joined <span className="text-[hsl(220,20%,14%)]">Griswold Industries (CLA-VAL)</span> as a Design Engineer, where I spent two years designing and optimizing components for aircraft refueling systems — nozzles, inline valves, and hydrant couplers. I worked across the full product lifecycle: concept design in SolidWorks, FEA structural validation in FEMAP, custom test fixture design, and compliance testing against industry standards.
-                </p>
-                <p>
-                  I'm currently pursuing an <span className="text-[hsl(220,20%,14%)]">M.Sc. in Mechanical Engineering at HES-SO Master</span> in Lausanne, Switzerland, deepening my analytical and research capabilities in advanced simulation and applied mechanics.
-                </p>
-                <p>
-                  I'm a <span className="text-[hsl(220,20%,14%)]">native French speaker</span> and <span className="text-[hsl(220,20%,14%)]">fluent in English</span> — I completed my undergraduate degree entirely in English in the US. I'm comfortable working in international, multicultural environments and across technical and business contexts.
-                </p>
-              </div>
-              <div className="mt-8 flex gap-4">
-                <button
-                  onClick={() => go("projects")}
-                  className="text-sm font-medium text-[hsl(220,65%,35%)] hover:text-[hsl(220,65%,28%)] transition-colors"
-                >
-                  View projects →
-                </button>
-                <button
-                  onClick={() => go("cv")}
-                  className="text-sm font-medium text-[hsl(220,10%,45%)] hover:text-[hsl(220,20%,15%)] transition-colors"
-                >
-                  Full CV →
-                </button>
-              </div>
-            </div>
-
-            <aside className="space-y-3">
-              <div className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
-                <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-3">
-                  Current
-                </p>
-                <p className="font-semibold text-[hsl(220,20%,10%)] text-sm">M.Sc. Student</p>
-                <p className="text-sm text-[hsl(220,10%,42%)] mt-0.5">HES-SO Master · Lausanne</p>
-                <div className="mt-3 flex items-center gap-1.5 text-xs text-emerald-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  Active
-                </div>
-              </div>
-              <div className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
-                <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-3">
-                  Previously
-                </p>
-                <p className="font-semibold text-[hsl(220,20%,10%)] text-sm">Design Engineer I</p>
-                <p className="text-sm text-[hsl(220,10%,42%)] mt-0.5">CLA-VAL · 2023–2025</p>
-              </div>
-              <div className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
-                <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-3">
-                  Certified
-                </p>
-                <p className="font-semibold text-[hsl(220,20%,10%)] text-sm">NCEES FE Exam</p>
-                <p className="text-sm text-[hsl(220,10%,42%)] mt-0.5">Fundamentals of Engineering</p>
-              </div>
-            </aside>
-          </section>
-
-          {/* Skills */}
-          <section className="border-t border-[hsl(35,20%,87%)] mx-auto max-w-5xl px-6 py-14">
-            <h2 className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-8">
-              Skills & Tools
-            </h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {skillGroups.map((g) => (
-                <div key={g.label}>
-                  <p className="text-xs font-semibold text-[hsl(220,10%,52%)] uppercase tracking-widest mb-3">
-                    {g.label}
+                <div className="space-y-4 text-[15px] leading-7 text-[hsl(220,10%,40%)]">
+                  <p>
+                    I'm a mechanical engineer with a B.Sc. from{" "}
+                    <span className="text-[hsl(220,20%,14%)] font-medium">Cal Poly Pomona</span>{" "}
+                    (California, USA) — a polytechnic university with a strong emphasis on hands-on
+                    engineering education. My degree gave me a rigorous foundation in fluid dynamics,
+                    thermodynamics, machine design, materials science, and structural analysis.
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {g.items.map((item) => (
-                      <span
-                        key={item}
-                        className={`inline-block text-xs font-medium px-2.5 py-1 rounded-full border ${g.color}`}
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                  <p>
+                    After graduating, I joined{" "}
+                    <span className="text-[hsl(220,20%,14%)] font-medium">Griswold Industries (CLA-VAL)</span>{" "}
+                    as a Design Engineer, where I spent two years designing and optimizing components for
+                    aircraft refueling systems — nozzles, inline valves, and hydrant couplers. I worked
+                    across the full product lifecycle: concept design in SolidWorks, FEA structural
+                    validation in FEMAP, custom test fixture design, and compliance testing.
+                  </p>
+                  <p>
+                    I'm currently pursuing an{" "}
+                    <span className="text-[hsl(220,20%,14%)] font-medium">M.Sc. in Mechanical Engineering at HES-SO Master</span>{" "}
+                    in Lausanne, Switzerland, deepening my analytical and research capabilities in
+                    advanced simulation and applied mechanics.
+                  </p>
+                  <p>
+                    I'm a{" "}
+                    <span className="text-[hsl(220,20%,14%)] font-medium">native French speaker</span>{" "}
+                    and{" "}
+                    <span className="text-[hsl(220,20%,14%)] font-medium">fluent in English</span>{" "}
+                    — I completed my undergraduate degree entirely in English in the US.
+                  </p>
                 </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Interests */}
-          <section className="border-t border-[hsl(35,20%,87%)] mx-auto max-w-5xl px-6 py-14">
-            <h2 className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-8">
-              Interests
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  icon: "◈",
-                  title: "3D Printing",
-                  desc: "Designing and printing mechanical parts, enclosures, and gadgets. I enjoy the full loop from CAD model to physical object.",
-                  color: "text-indigo-400",
-                },
-                {
-                  icon: "⬡",
-                  title: "Electronics & Raspberry Pi",
-                  desc: "Building small automation projects and experimenting with different sensors.",
-                  color: "text-violet-400",
-                },
-                {
-                  icon: "⬟",
-                  title: "Soccer",
-                  desc: "I love playing, watching and discussing about the beautiful game.",
-                  color: "text-emerald-400",
-                },
-                {
-                  icon: "◇",
-                  title: "Snowboarding",
-                  desc: "Riding in the Alps when the season allows. A good reset from the desk, and a reminder that physics matters.",
-                  color: "text-sky-400",
-                },
-                {
-                  icon: "◎",
-                  title: "Music",
-                  desc: "Listening and occasionally playing. Music helps me focus during long design sessions and unwind after them.",
-                  color: "text-amber-400",
-                },
-              ].map((interest) => (
-                <div
-                  key={interest.title}
-                  className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}
-                >
-                  <div className={`text-xl mb-3 ${interest.color}`}>{interest.icon}</div>
-                  <h3 className="font-semibold text-[hsl(220,20%,8%)] text-sm mb-1.5">{interest.title}</h3>
-                  <p className="text-sm text-[hsl(220,10%,42%)] leading-6">{interest.desc}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-      )}
-
-      {/* ── CV ─────────────────────────────────────────────────────────── */}
-      {page === "cv" && (
-        <div className="fade-in-up mx-auto max-w-5xl px-6 py-16">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-2">
-                Curriculum Vitae
-              </p>
-              <h2 className="text-3xl font-bold text-[hsl(220,20%,8%)]">Education & Experience</h2>
-            </div>
-            <a
-              href="/Victor_Garnier_CV.pdf"
-              className="text-sm text-[hsl(220,65%,35%)] hover:text-[hsl(220,65%,28%)] transition-colors"
-            >
-              Download PDF ↓
-            </a>
-          </div>
-
-          {[
-            { heading: "Education", rows: education, dotColor: "bg-[hsl(220,65%,35%)]" },
-            { heading: "Work Experience", rows: experience, dotColor: "bg-[hsl(220,10%,52%)]" },
-          ].map((section) => (
-            <div key={section.heading} className="mb-14">
-              <div className="flex items-center gap-4 mb-7">
-                <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest shrink-0">
-                  {section.heading}
-                </p>
-                <div className="flex-1 h-px bg-[hsl(35,20%,87%)]" />
               </div>
-              <div className="relative space-y-6 before:absolute before:left-[5px] before:top-3 before:bottom-3 before:w-px before:bg-[hsl(35,20%,87%)]">
-                {section.rows.map((row: typeof education[0] | typeof experience[0]) => (
-                  <div key={"degree" in row ? row.degree : row.title} className="relative pl-7">
-                    <div className={`absolute left-0 top-[7px] h-2.5 w-2.5 rounded-full ${section.dotColor} ring-4 ring-[hsl(38,35%,96%)]`} />
-                    <div className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
-                      <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-                        <div>
-                          <h3 className="font-semibold text-[hsl(220,20%,8%)]">
-                            {"degree" in row ? row.degree : row.title}
-                          </h3>
-                          <p className="text-sm text-[hsl(220,10%,42%)] mt-0.5">
-                            {"school" in row ? row.school : (row as typeof experience[0]).company}
-                            {"note" in row && row.note ? ` · ${row.note}` : ""}
-                          </p>
-                        </div>
-                        <span className="text-xs font-medium text-[hsl(220,10%,52%)] shrink-0">
-                          {row.period}
+
+              <aside className="space-y-3">
+                {[
+                  { label: "Current",    title: "M.Sc. Student",      sub: "HES-SO Master · Lausanne", badge: { text: "Active", color: "text-emerald-600 bg-emerald-50 border-emerald-200" } },
+                  { label: "Previously", title: "Design Engineer I",  sub: "CLA-VAL · 2023–2025" },
+                  { label: "Certified",  title: "NCEES FE Exam",      sub: "Fundamentals of Engineering" },
+                  { label: "Education",  title: "B.Sc. Mech. Eng.",   sub: "Cal Poly Pomona · GPA 3.58" },
+                ].map(card => (
+                  <div key={card.label} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
+                    <p className="font-mono text-[10px] text-[hsl(220,10%,54%)] uppercase tracking-widest mb-2">{card.label}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="font-semibold text-[hsl(220,20%,10%)] text-sm">{card.title}</p>
+                      {card.badge && (
+                        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${card.badge.color}`}>
+                          {card.badge.text}
                         </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-[hsl(220,10%,42%)] mt-0.5">{card.sub}</p>
+                  </div>
+                ))}
+              </aside>
+            </section>
+
+            {/* Skills */}
+            <section className="px-8 md:px-14 py-12 border-t border-[hsl(35,20%,87%)]">
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] uppercase tracking-widest mb-8">
+                — Skills & Tools
+              </p>
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {skillGroups.map(g => (
+                  <div key={g.label} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
+                    <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full border mb-4 ${g.color}`}>
+                      {g.label}
+                    </span>
+                    <ul className="space-y-1.5">
+                      {g.items.map(item => (
+                        <li key={item} className="text-sm text-[hsl(220,10%,40%)]">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Interests */}
+            <section className="px-8 md:px-14 py-12 border-t border-[hsl(35,20%,87%)]">
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] uppercase tracking-widest mb-8">
+                — Interests
+              </p>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { icon: "◈", title: "3D Printing",           desc: "Designing and printing mechanical parts, enclosures, and gadgets. I enjoy the full loop from CAD model to physical object.",            color: "text-indigo-500" },
+                  { icon: "⬡", title: "Electronics & Raspberry Pi", desc: "Building small automation projects and experimenting with different sensors.",                                                    color: "text-violet-500" },
+                  { icon: "⬟", title: "Soccer",                desc: "I love playing, watching and discussing about the beautiful game.",                                                                    color: "text-emerald-500" },
+                  { icon: "◇", title: "Snowboarding",          desc: "Riding in the Alps when the season allows. A good reset from the desk, and a reminder that physics matters.",                           color: "text-sky-500" },
+                  { icon: "◎", title: "Music",                 desc: "Listening and occasionally playing. Music helps me focus during long design sessions and unwind after them.",                            color: "text-amber-500" },
+                ].map(interest => (
+                  <div key={interest.title} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
+                    <div className={`text-xl mb-3 ${interest.color}`}>{interest.icon}</div>
+                    <h3 className="font-semibold text-[hsl(220,20%,8%)] text-sm mb-1.5">{interest.title}</h3>
+                    <p className="text-sm text-[hsl(220,10%,42%)] leading-6">{interest.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+          </div>
+        )}
+
+        {/* ════════════════════ CV ══════════════════════════════════════════ */}
+        {page === "cv" && (
+          <div className="fade-in-up pt-14 lg:pt-0 px-8 md:px-14 py-14">
+
+            {/* Header */}
+            <div className="flex items-center gap-4 mb-14">
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] tracking-widest uppercase shrink-0">02 / CV</p>
+              <div className="flex-1 h-px bg-[hsl(35,20%,87%)]" />
+              <a href="/Victor_Garnier_CV.pdf" className="font-semibold text-xs text-[hsl(220,65%,35%)] hover:text-[hsl(220,65%,28%)] transition-colors shrink-0">
+                ↓ PDF
+              </a>
+            </div>
+
+            {/* Experience timeline */}
+            <div className="mb-16">
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] uppercase tracking-widest mb-10">
+                — Work Experience
+              </p>
+              <div className="space-y-0">
+                {experience.map((e, i) => (
+                  <div key={e.title} className="relative flex gap-8 pb-10 last:pb-0">
+                    {i < experience.length - 1 && (
+                      <div className="absolute left-[6px] top-7 bottom-0 w-px bg-[hsl(35,20%,85%)]" />
+                    )}
+                    <div className="mt-1 shrink-0">
+                      <div className="h-3.5 w-3.5 rounded-full border-2 border-[hsl(220,65%,35%)] bg-[hsl(38,35%,96%)]" />
+                    </div>
+                    <div className="flex-1 min-w-0 -mt-0.5">
+                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5 mb-1">
+                        <h3 className="font-bold text-[hsl(220,20%,8%)]">{e.title}</h3>
+                        <span className="text-sm text-[hsl(220,10%,45%)]">{e.company}</span>
                       </div>
-                      {"desc" in row && row.desc && (
-                        <p className="text-sm text-[hsl(220,10%,42%)] leading-6">{row.desc}</p>
-                      )}
-                      {"bullets" in row && row.bullets && (
-                        <ul className="mt-2 space-y-1.5">
-                          {row.bullets.map((b: string) => (
-                            <li key={b} className="flex items-start gap-2 text-sm text-[hsl(220,10%,42%)] leading-6">
-                              <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[hsl(220,10%,52%)]" />
-                              {b}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                      <p className="font-mono text-[11px] text-[hsl(220,10%,56%)] mb-4">{e.period}</p>
+                      <ul className="space-y-2">
+                        {e.bullets.map(b => (
+                          <li key={b} className="flex items-start gap-2.5 text-sm text-[hsl(220,10%,40%)] leading-6">
+                            <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[hsl(220,65%,35%)]" />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          ))}
 
-          {/* Certification */}
-          <div>
-            <div className="flex items-center gap-4 mb-7">
-              <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest shrink-0">
-                Certification
+            {/* Education timeline */}
+            <div className="mb-16">
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] uppercase tracking-widest mb-10">
+                — Education
               </p>
+              <div className="space-y-0">
+                {education.map((e, i) => (
+                  <div key={e.degree} className="relative flex gap-8 pb-10 last:pb-0">
+                    {i < education.length - 1 && (
+                      <div className="absolute left-[6px] top-7 bottom-0 w-px bg-[hsl(35,20%,85%)]" />
+                    )}
+                    <div className="mt-1 shrink-0">
+                      <div className="h-3.5 w-3.5 rounded-full border-2 border-[hsl(220,65%,35%)]/50 bg-[hsl(38,35%,96%)]" />
+                    </div>
+                    <div className="flex-1 min-w-0 -mt-0.5">
+                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+                        <h3 className="font-bold text-[hsl(220,20%,8%)]">{e.degree}</h3>
+                        {"note" in e && e.note && (
+                          <span className="font-mono text-[11px] text-[hsl(220,65%,35%)] border border-[hsl(220,65%,35%)]/30 px-2 py-0.5 rounded">
+                            {e.note}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-[hsl(220,10%,45%)] mb-1">{e.school}</p>
+                      <p className="font-mono text-[11px] text-[hsl(220,10%,56%)] mb-4">{e.period}</p>
+                      <p className="text-sm text-[hsl(220,10%,40%)] leading-6">{e.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certification */}
+            <div>
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] uppercase tracking-widest mb-8">
+                — Certification
+              </p>
+              <div className={`glow-card rounded-2xl border ${C.border} ${C.card} p-6`}>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="font-bold text-[hsl(220,20%,8%)]">NCEES — Fundamentals of Engineering (FE)</h3>
+                    <p className="text-sm text-[hsl(220,10%,45%)] mt-0.5">NCEES</p>
+                  </div>
+                  <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
+                    Completed
+                  </span>
+                </div>
+                <p className="mt-3 text-sm text-[hsl(220,10%,42%)] leading-6">
+                  First step toward becoming a licensed Professional Engineer. Demonstrates foundational
+                  competency across all core engineering disciplines.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        )}
+
+        {/* ════════════════════ PROJECTS ════════════════════════════════════ */}
+        {page === "projects" && (
+          <div className="fade-in-up pt-14 lg:pt-0 px-8 md:px-14 py-14">
+
+            <div className="flex items-center gap-4 mb-14">
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] tracking-widest uppercase shrink-0">03 / Projects</p>
               <div className="flex-1 h-px bg-[hsl(35,20%,87%)]" />
             </div>
-            <div className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="font-semibold text-[hsl(220,20%,8%)]">NCEES — Fundamentals of Engineering (FE)</h3>
-                  <p className="text-sm text-[hsl(220,10%,42%)] mt-0.5">NCEES</p>
-                </div>
-                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
-                  Completed
-                </span>
-              </div>
-              <p className="mt-3 text-sm text-[hsl(220,10%,42%)] leading-6">
-                First step toward becoming a licensed Professional Engineer. Demonstrates foundational
-                competency across all core engineering disciplines.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
 
-      {/* ── PROJECTS ────────────────────────────────────────────────────── */}
-      {page === "projects" && (
-        <div className="fade-in-up mx-auto max-w-5xl px-6 py-16">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-2">
-                Selected Work
-              </p>
-              <h2 className="text-3xl font-bold text-[hsl(220,20%,8%)]">Projects</h2>
-            </div>
-          </div>
-
-          {[
-            { heading: "Work Projects",     items: workProjects },
-            { heading: "Academic Projects", items: academicProjects },
-            { heading: "Personal Projects", items: personalProjects },
-          ].map((section) => (
-            <div key={section.heading} className="mb-14">
-              <div className="flex items-center gap-4 mb-7">
-                <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest shrink-0">
-                  {section.heading}
+            {[
+              { heading: "Work Projects",     items: workProjects },
+              { heading: "Academic Projects", items: academicProjects },
+              { heading: "Personal Projects", items: personalProjects },
+            ].map(section => (
+              <div key={section.heading} className="mb-14">
+                <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] uppercase tracking-widest mb-7 flex items-center gap-4">
+                  — {section.heading}
+                  <span className="flex-1 h-px bg-[hsl(35,20%,87%)]" />
                 </p>
-                <div className="flex-1 h-px bg-[hsl(35,20%,87%)]" />
-              </div>
-              {section.items.length === 0 ? (
-                <p className="text-sm text-[hsl(220,10%,54%)] italic">Coming soon.</p>
-              ) : (
-                <div className="grid gap-5 md:grid-cols-2">
-                  {section.items.map((p) => (
-                    <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} flex flex-col overflow-hidden`}>
-                      {/* Image strip */}
-                      {p.images && p.images.length > 0 && (
-                        <div className="flex gap-1 overflow-x-auto scrollbar-none">
-                          {p.images.map((src, i) => (
-                            <button
-                              key={i}
-                              onClick={() => setLb(src)}
-                              className="relative shrink-0 w-full bg-[hsl(38,28%,99%)] flex items-center justify-center p-2"
-                              style={{ minWidth: p.images!.length > 1 ? "60%" : "100%" }}
-                            >
-                              <img
-                                src={src}
-                                alt={`${p.title} ${i + 1}`}
-                                className="w-full h-auto max-h-64 object-contain hover:opacity-90 transition-opacity duration-300"
-                              />
-                            </button>
-                          ))}
+                {section.items.length === 0 ? (
+                  <p className="text-sm text-[hsl(220,10%,54%)] italic">Coming soon.</p>
+                ) : (
+                  <div className="grid gap-5 md:grid-cols-2">
+                    {section.items.map(p => (
+                      <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} flex flex-col overflow-hidden`}>
+                        {p.images && p.images.length > 0 && (
+                          <div className="flex gap-1 overflow-x-auto scrollbar-none">
+                            {p.images.map((src, i) => (
+                              <button
+                                key={i}
+                                onClick={() => setLb(src)}
+                                className="relative shrink-0 w-full bg-[hsl(38,28%,97%)] flex items-center justify-center p-2"
+                                style={{ minWidth: p.images!.length > 1 ? "60%" : "100%" }}
+                              >
+                                <img
+                                  src={src}
+                                  alt={`${p.title} ${i + 1}`}
+                                  className="w-full h-auto max-h-64 object-contain hover:opacity-90 transition-opacity duration-300"
+                                />
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                        <div className="p-7 flex flex-col flex-1">
+                          <div className="flex items-start justify-between mb-4">
+                            <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>{p.label}</span>
+                            <span className="font-mono text-[11px] text-[hsl(220,10%,60%)]">{p.num}</span>
+                          </div>
+                          <h3 className="text-base font-bold text-[hsl(220,20%,8%)] mb-3">{p.title}</h3>
+                          <p className="text-sm text-[hsl(220,10%,40%)] leading-6 flex-1">{p.desc}</p>
+                          <div className="mt-6 pt-5 border-t border-[hsl(35,20%,87%)] flex flex-wrap items-center justify-between gap-2">
+                            <div className="flex flex-wrap gap-x-3 gap-y-1">
+                              {p.tools.map(t => (
+                                <span key={t} className="font-mono text-[11px] text-[hsl(220,10%,50%)]">{t}</span>
+                              ))}
+                            </div>
+                            <span className="font-mono text-[11px] text-[hsl(220,10%,58%)] shrink-0">{p.period}</span>
+                          </div>
                         </div>
-                      )}
-                      <div className="p-7 flex flex-col flex-1">
-                        <div className="flex items-start justify-between mb-5">
-                          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
-                            {p.label}
-                          </span>
-                          <span className="text-3xl font-black text-[hsl(35,20%,87%)] select-none leading-none">
-                            {p.num}
-                          </span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-[hsl(220,20%,8%)] mb-3">{p.title}</h3>
-                        <p className="text-sm text-[hsl(220,10%,42%)] leading-6 flex-1">{p.desc}</p>
-                        <div className="mt-6 pt-5 border-t border-[hsl(35,20%,87%)] flex flex-wrap gap-2">
-                          {p.tools.map((t) => (
-                            <span key={t} className="text-xs text-[hsl(220,10%,48%)] font-medium">{t}</span>
-                          ))}
-                        </div>
-                        <p className="mt-2 text-xs text-[hsl(220,10%,54%)]">{p.period}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* ── CONTACT ─────────────────────────────────────────────────────── */}
-      {page === "contact" && (
-        <div className="fade-in-up relative overflow-hidden">
-          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[hsl(220,65%,35%)]/50 to-transparent" />
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,hsl(220,65%,35%,0.05),transparent)]" />
-
-          <div className="mx-auto max-w-5xl px-6 py-20">
-            <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-4">
-              Contact
-            </p>
-            <h2
-              className="gradient-text font-bold leading-none tracking-tight mb-14"
-              style={{ fontSize: "clamp(40px, 6vw, 76px)", letterSpacing: "-0.02em" }}
-            >
-              Looking forward to meeting you
-              <br />
-            
-            </h2>
-
-            <div className="grid gap-8 md:grid-cols-[1fr_300px]">
-              <div>
-                {[
-                  { label: "Email",    value: "vgarnier0125@gmail.com", href: "mailto:vgarnier0125@gmail.com" },
-                  { label: "Phone",    value: "+41 78 601 73 05",       href: "tel:+41786017305" },
-                  { label: "Location", value: "Lausanne, Switzerland",  href: null },
-                ].map((item, idx, arr) => {
-                  const inner = (
-                    <div className={`py-5 flex items-center justify-between group ${idx < arr.length - 1 ? "border-b border-[hsl(35,20%,87%)]" : ""}`}>
-                      <span className="text-xs font-medium uppercase tracking-widest text-[hsl(220,10%,52%)] w-24">
-                        {item.label}
-                      </span>
-                      <span className="text-[15px] text-[hsl(220,20%,25%)] group-hover:text-[hsl(220,20%,8%)] transition-colors">
-                        {item.value}
-                      </span>
-                    </div>
-                  );
-                  return item.href
-                    ? <a key={item.label} href={item.href}>{inner}</a>
-                    : <div key={item.label}>{inner}</div>;
-                })}
+                      </article>
+                    ))}
+                  </div>
+                )}
               </div>
-
-              <div className={`glow-card rounded-2xl border ${C.border} ${C.card} p-6 self-start`}>
-                <p className="text-xs font-medium text-[hsl(220,10%,52%)] uppercase tracking-widest mb-5">
-                  Open to
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Mechanical design & engineering roles",
-                    "Looking for a Master Thesis opportunity in applied mechanics or simulation",
-                    "R&D and simulation-driven positions",
-                    "3D printing and prototyping work",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-[hsl(220,10%,40%)] leading-6">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(220,65%,35%)]" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-6 pt-5 border-t border-[hsl(35,20%,87%)] text-xs text-[hsl(220,10%,54%)] space-y-1">
-                  <p>Lausanne, Switzerland</p>
-                  <p>French & English</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── FOOTER ──────────────────────────────────────────────────────── */}
-      <footer className="border-t border-[hsl(35,20%,87%)] mt-8">
-        <div className="mx-auto max-w-5xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[hsl(220,10%,52%)]">© 2026 Victor Garnier</p>
-          <div className="flex items-center gap-5">
-            {nav.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => go(item.id)}
-                className="text-xs text-[hsl(220,10%,52%)] hover:text-[hsl(220,10%,40%)] transition-colors"
-              >
-                {item.label}
-              </button>
             ))}
           </div>
-        </div>
-      </footer>
+        )}
+
+        {/* ════════════════════ CONTACT ═════════════════════════════════════ */}
+        {page === "contact" && (
+          <div className="fade-in-up pt-14 lg:pt-0 px-8 md:px-14 py-14 min-h-[calc(100vh-0px)] flex flex-col">
+
+            <div className="flex items-center gap-4 mb-14">
+              <p className="font-mono text-[11px] text-[hsl(220,10%,55%)] tracking-widest uppercase shrink-0">04 / Contact</p>
+              <div className="flex-1 h-px bg-[hsl(35,20%,87%)]" />
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center max-w-2xl">
+              <h2
+                className="gradient-text font-black leading-none tracking-tight mb-6"
+                style={{ fontSize: "clamp(38px, 6vw, 72px)", letterSpacing: "-0.03em" }}
+              >
+                Looking forward<br />to meeting you
+              </h2>
+
+              <p className="text-[16px] leading-7 text-[hsl(220,10%,40%)] mb-12 max-w-lg">
+                Whether you have a project in mind, a thesis opportunity, or just want to connect — I'd love to hear from you.
+              </p>
+
+              <div className="grid sm:grid-cols-[1fr_260px] gap-6">
+
+                {/* Contact list */}
+                <div className="space-y-3">
+                  {[
+                    { label: "Email",    value: "vgarnier0125@gmail.com", href: "mailto:vgarnier0125@gmail.com" },
+                    { label: "Phone",    value: "+41 78 601 73 05",       href: "tel:+41786017305" },
+                    { label: "Location", value: "Lausanne, Switzerland",  href: null },
+                  ].map(c => (
+                    <div key={c.label} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5 flex items-center justify-between group`}>
+                      <div>
+                        <p className="font-mono text-[10px] text-[hsl(220,10%,54%)] uppercase tracking-wider mb-1">{c.label}</p>
+                        {c.href ? (
+                          <a href={c.href} className="text-sm font-medium text-[hsl(220,65%,35%)] group-hover:underline" target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+                            {c.value}
+                          </a>
+                        ) : (
+                          <p className="text-sm font-medium text-[hsl(220,20%,10%)]">{c.value}</p>
+                        )}
+                      </div>
+                      {c.href && <span className="text-[hsl(220,10%,62%)] group-hover:text-[hsl(220,65%,35%)] transition-colors text-sm">→</span>}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Open to */}
+                <div className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}>
+                  <p className="font-mono text-[10px] text-[hsl(220,10%,54%)] uppercase tracking-wider mb-4">Open to</p>
+                  <ul className="space-y-2.5">
+                    {[
+                      "Mechanical design & engineering roles",
+                      "Master Thesis in applied mechanics or simulation",
+                      "R&D and simulation-driven positions",
+                      "3D printing and prototyping work",
+                    ].map(item => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-[hsl(220,10%,40%)] leading-5">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(220,65%,35%)]" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-5 pt-4 border-t border-[hsl(35,20%,87%)] space-y-1">
+                    <p className="font-mono text-[10px] text-[hsl(220,10%,56%)]">Lausanne, Switzerland</p>
+                    <p className="font-mono text-[10px] text-[hsl(220,10%,56%)]">French & English</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Footer line */}
+            <div className="mt-16 pt-6 border-t border-[hsl(35,20%,87%)] flex items-center justify-between">
+              <p className="font-mono text-[10px] text-[hsl(220,10%,54%)]">© 2026 Victor Garnier</p>
+              <div className="flex items-center gap-5">
+                {navItems.map(item => (
+                  <button
+                    key={item.id}
+                    onClick={() => go(item.id)}
+                    className="font-mono text-[10px] text-[hsl(220,10%,54%)] hover:text-[hsl(220,10%,38%)] transition-colors uppercase tracking-wider"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        )}
+
+      </main>
     </div>
   );
 }
