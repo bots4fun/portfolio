@@ -752,9 +752,9 @@ export default function Page() {
               className="gradient-text font-bold leading-none tracking-tight mb-14"
               style={{ fontSize: "clamp(40px, 6vw, 76px)", letterSpacing: "-0.02em" }}
             >
-              Let's build
+              Looking forward to meeting you
               <br />
-              something.
+            
             </h2>
 
             <div className="grid gap-8 md:grid-cols-[1fr_300px]">
@@ -787,10 +787,9 @@ export default function Page() {
                 <ul className="space-y-3">
                   {[
                     "Mechanical design & engineering roles",
-                    "Fluid systems and hydraulics projects",
+                    "Looking for a Master Thesis opportunity in applied mechanics or simulation",
                     "R&D and simulation-driven positions",
                     "3D printing and prototyping work",
-                    "Embedded systems side projects",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-sm text-[hsl(215,15%,58%)] leading-6">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(235,80%,68%)]" />
