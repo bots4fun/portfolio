@@ -396,11 +396,11 @@ export default function Page() {
                 </p>
                 <p>
                   Some of the hobbies I enjoy include{" "}
-                  <span className="text-[hsl(40,15%,82%)] font-medium">3D printing</span> anything and everything from simple stands to complex mechanical devices,
-                  playing, watching and discussing about{" "}
-                  <span className="text-[hsl(40,15%,82%)] font-medium">soccer</span>,{" "}
-                  <span className="text-[hsl(40,15%,82%)] font-medium">snowboarding</span> when the weather allows it is my favorite winter sport,
-                  and listening to or playing{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium">3D printing</span> anything and everything from simple stands to complex mechanical devices. 
+                  Playing, watching and discussing about{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium">soccer</span>.{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium"> Snowboarding</span> when the weather allows it is my favorite winter sport.
+                   And listening to or playing{" "}
                   <span className="text-[hsl(40,15%,82%)] font-medium">music</span> as I believe there is nothing better than your favorite song to give you that extra boost of energy and motivation to power through a long day of work or study.
                 </p>
               </div>
