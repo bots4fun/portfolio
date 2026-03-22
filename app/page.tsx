@@ -124,7 +124,7 @@ const workProjects: Project[] = [
     period: "2023",
     desc:   "Bypass valve assembly combining aluminum hog-outs and castings. Opens once system pressure reaches a pre-set value — spring and set-screw dictate the cracking pressure.",
     tools:  ["SolidWorks", "Assembly Design", "GD&T", "Pressure Systems"],
-    images: ["/projects/bypass-drawing.jpg", "/projects/bypass-3d.jpg"],
+    images: ["/projects/bypass-3d.png"],
   },
   {
     num:    "03",
@@ -134,7 +134,7 @@ const workProjects: Project[] = [
     period: "2024",
     desc:   "Modular test fixture covering valve sizes from 6 in to 27 in. Hermetically seals valves via a custom rubber insert and adjustable clamp. Composed of aluminum parts and off-the-shelf hardware.",
     tools:  ["SolidWorks", "Fixture Design", "Testing", "Aluminum Machining"],
-    images: ["/projects/fixture-drawing.jpg", "/projects/fixture-3d.jpg"],
+    images: ["/projects/fixture-3d.png"],
   },
   {
     num:    "04",
@@ -144,7 +144,7 @@ const workProjects: Project[] = [
     period: "2024",
     desc:   "2-in-1 Delrin compression tool for disassembling and reassembling pistons across two different product lines. Compact design keeps all parts attached to avoid loss — built for field use.",
     tools:  ["SolidWorks", "Delrin", "Tool Design", "GD&T"],
-    images: ["/projects/spring-tool-drawing.jpg", "/projects/spring-tool-3d.jpg"],
+    images: ["/projects/spring-tool-1.png", "/projects/spring-tool-2.png"],
   },
   {
     num:    "05",
@@ -154,7 +154,7 @@ const workProjects: Project[] = [
     period: "2024",
     desc:   "Custom aluminum hog-out hub mounted on a 200-ton press shaft via woodruff keys, set screws, and clamping force. Designed to increase shaft diameter and prevent wire cable failure due to bending radius.",
     tools:  ["SolidWorks", "GD&T", "Aluminum Machining", "Mechanical Design"],
-    images: ["/projects/hub-drawing.jpg", "/projects/hub-3d.jpg"],
+    images: ["/projects/hub-3d.png", "/projects/hub-2.png"],
   },
 ];
 
@@ -167,7 +167,7 @@ const academicProjects: Project[] = [
     period: "2022 – 2023",
     desc:   "Full UGV design for the NGCP competition. Mission: drive to GPS targets, retrieve a care package and miniature figure (injured hiker), then hand off to a UAV. Responsible for the full payload assembly including rotation plate, linkage bar, leverage arm, linear actuator, storage unit, and separation sub-assembly.",
     tools:  ["SolidWorks", "FEA", "3D Printing", "Team Design", "Systems Integration"],
-    images: ["/projects/ugv-assembly.jpg", "/projects/ugv-3d.jpg"],
+    images: ["/projects/ugv-3d.png"],
   },
 ];
 
