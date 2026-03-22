@@ -239,45 +239,94 @@ export default function Page() {
             {/* Soft radial glow */}
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,hsl(235,80%,68%,0.07),transparent)]" />
 
-            <div className="mx-auto max-w-5xl px-6 pt-20 pb-20 md:pt-28 md:pb-24">
-              {/* Pill badge */}
-              <div className="fade-in-up inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[hsl(235,80%,68%)]/20 bg-[hsl(235,80%,68%)]/8 mb-8">
-                <span className="h-1.5 w-1.5 rounded-full bg-[hsl(235,80%,72%)] animate-pulse" />
-                <span className="text-xs font-medium text-[hsl(235,80%,78%)]">
-                  Mechanical Engineer · HES-SO Lausanne
-                </span>
+            <div className="mx-auto max-w-5xl px-6 pt-16 pb-16 md:pt-24 md:pb-20 grid md:grid-cols-[1fr_300px] lg:grid-cols-[1fr_360px] gap-10 items-center">
+              {/* Left — content */}
+              <div>
+                <div className="fade-in-up inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[hsl(235,80%,68%)]/20 bg-[hsl(235,80%,68%)]/8 mb-8">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[hsl(235,80%,72%)] animate-pulse" />
+                  <span className="text-xs font-medium text-[hsl(235,80%,78%)]">
+                    Mechanical Engineer · Lausanne, Switzerland
+                  </span>
+                </div>
+
+                <h1
+                  className="fade-in-up d1 gradient-text font-bold leading-none tracking-tight"
+                  style={{ fontSize: "clamp(44px, 7.5vw, 96px)", letterSpacing: "-0.025em" }}
+                >
+                  Victor
+                  <br />
+                  Garnier
+                </h1>
+
+                <p className="fade-in-up d2 mt-7 max-w-md text-[16px] leading-7 text-[hsl(215,15%,60%)]">
+                  Mechanical Engineer with a B.Sc. from Cal Poly Pomona and 2 years of industry
+                  experience designing aircraft refueling systems at CLA-VAL.
+                </p>
+
+                <div className="fade-in-up d3 mt-9 flex flex-wrap gap-3">
+                  <button
+                    onClick={() => go("contact")}
+                    className="h-10 px-6 rounded-full bg-[hsl(235,80%,62%)] hover:bg-[hsl(235,80%,68%)] text-white text-sm font-semibold transition-colors shadow-lg shadow-[hsl(235,80%,62%)]/25"
+                  >
+                    Get in touch
+                  </button>
+                  <a
+                    href="/Victor_Garnier_CV.pdf"
+                    className="h-10 px-6 rounded-full border border-[hsl(222,25%,22%)] text-[hsl(215,25%,75%)] text-sm font-medium hover:border-[hsl(222,25%,32%)] hover:bg-white/4 transition-colors flex items-center"
+                  >
+                    Download CV
+                  </a>
+                </div>
               </div>
 
-              {/* Name */}
-              <h1
-                className="fade-in-up d1 gradient-text font-bold leading-none tracking-tight"
-                style={{ fontSize: "clamp(48px, 8.5vw, 104px)", letterSpacing: "-0.025em" }}
-              >
-                Victor
-                <br />
-                Garnier
-              </h1>
-
-              {/* Tagline */}
-              <p className="fade-in-up d2 mt-7 max-w-lg text-[17px] leading-7 text-[hsl(215,15%,60%)]">
-                2 years designing aircraft refueling systems at CLA-VAL. Strong background
-                in fluid dynamics, FEA, and mechanical design.
-              </p>
-
-              {/* CTAs */}
-              <div className="fade-in-up d3 mt-9 flex flex-wrap gap-3">
-                <button
-                  onClick={() => go("contact")}
-                  className="h-10 px-6 rounded-full bg-[hsl(235,80%,62%)] hover:bg-[hsl(235,80%,68%)] text-white text-sm font-semibold transition-colors shadow-lg shadow-[hsl(235,80%,62%)]/25"
-                >
-                  Get in touch
-                </button>
-                <a
-                  href="/Victor_Garnier_CV.pdf"
-                  className="h-10 px-6 rounded-full border border-[hsl(222,25%,22%)] text-[hsl(215,25%,75%)] text-sm font-medium hover:border-[hsl(222,25%,32%)] hover:bg-white/4 transition-colors flex items-center"
-                >
-                  Download CV
-                </a>
+              {/* Right — engineering SVG illustration */}
+              <div className="hidden md:flex items-center justify-center fade-in-up d4">
+                <svg viewBox="0 0 320 300" fill="none" className="w-full max-w-xs opacity-95" aria-hidden>
+                  {/* Outer ring */}
+                  <circle cx="160" cy="150" r="118" stroke="hsl(235,80%,68%)" strokeWidth="0.6" strokeOpacity="0.12" />
+                  {/* PCD circle */}
+                  <circle cx="160" cy="150" r="80" stroke="hsl(235,80%,68%)" strokeWidth="0.8" strokeOpacity="0.22" />
+                  {/* Mid ring */}
+                  <circle cx="160" cy="150" r="50" stroke="hsl(235,80%,68%)" strokeWidth="1" strokeOpacity="0.3" />
+                  {/* Bore / center circle */}
+                  <circle cx="160" cy="150" r="22" stroke="hsl(235,80%,68%)" strokeWidth="1.5" strokeOpacity="0.55" fill="hsl(235,80%,68%)" fillOpacity="0.05" />
+                  {/* Center point */}
+                  <circle cx="160" cy="150" r="3" fill="hsl(235,80%,68%)" fillOpacity="0.75" />
+                  {/* Center crosshairs */}
+                  <line x1="30" y1="150" x2="290" y2="150" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.18" />
+                  <line x1="160" y1="15" x2="160" y2="285" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.18" />
+                  {/* 45° construction lines */}
+                  <line x1="66" y1="56" x2="254" y2="244" stroke="hsl(235,80%,68%)" strokeWidth="0.3" strokeOpacity="0.09" />
+                  <line x1="254" y1="56" x2="66" y2="244" stroke="hsl(235,80%,68%)" strokeWidth="0.3" strokeOpacity="0.09" />
+                  {/* Bolt holes × 4 at 90° on PCD */}
+                  <circle cx="160" cy="70" r="7" stroke="hsl(235,80%,68%)" strokeWidth="1" strokeOpacity="0.5" />
+                  <line x1="155" y1="70" x2="165" y2="70" stroke="hsl(235,80%,68%)" strokeWidth="0.75" strokeOpacity="0.65" />
+                  <line x1="160" y1="65" x2="160" y2="75" stroke="hsl(235,80%,68%)" strokeWidth="0.75" strokeOpacity="0.65" />
+                  <circle cx="160" cy="230" r="7" stroke="hsl(235,80%,68%)" strokeWidth="1" strokeOpacity="0.5" />
+                  <line x1="155" y1="230" x2="165" y2="230" stroke="hsl(235,80%,68%)" strokeWidth="0.75" strokeOpacity="0.65" />
+                  <line x1="160" y1="225" x2="160" y2="235" stroke="hsl(235,80%,68%)" strokeWidth="0.75" strokeOpacity="0.65" />
+                  <circle cx="80" cy="150" r="7" stroke="hsl(235,80%,68%)" strokeWidth="1" strokeOpacity="0.5" />
+                  <line x1="75" y1="150" x2="85" y2="150" stroke="hsl(235,80%,68%)" strokeWidth="0.75" strokeOpacity="0.65" />
+                  <line x1="80" y1="145" x2="80" y2="155" stroke="hsl(235,80%,68%)" strokeWidth="0.75" strokeOpacity="0.65" />
+                  <circle cx="240" cy="150" r="7" stroke="hsl(235,80%,68%)" strokeWidth="1" strokeOpacity="0.5" />
+                  <line x1="235" y1="150" x2="245" y2="150" stroke="hsl(235,80%,68%)" strokeWidth="0.75" strokeOpacity="0.65" />
+                  <line x1="240" y1="145" x2="240" y2="155" stroke="hsl(235,80%,68%)" strokeWidth="0.75" strokeOpacity="0.65" />
+                  {/* Dimension line — vertical left */}
+                  <line x1="22" y1="32" x2="22" y2="268" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.22" />
+                  <line x1="18" y1="42" x2="22" y2="32" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.3" />
+                  <line x1="26" y1="42" x2="22" y2="32" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.3" />
+                  <line x1="18" y1="258" x2="22" y2="268" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.3" />
+                  <line x1="26" y1="258" x2="22" y2="268" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.3" />
+                  <line x1="22" y1="32" x2="42" y2="32" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.15" strokeDasharray="3 2" />
+                  <line x1="22" y1="268" x2="42" y2="268" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.15" strokeDasharray="3 2" />
+                  {/* Small secondary circle top-right corner */}
+                  <circle cx="286" cy="42" r="24" stroke="hsl(235,80%,68%)" strokeWidth="0.6" strokeOpacity="0.13" />
+                  <circle cx="286" cy="42" r="12" stroke="hsl(235,80%,68%)" strokeWidth="0.8" strokeOpacity="0.2" />
+                  <circle cx="286" cy="42" r="3.5" stroke="hsl(235,80%,68%)" strokeWidth="1" strokeOpacity="0.4" />
+                  <circle cx="286" cy="42" r="1.5" fill="hsl(235,80%,68%)" fillOpacity="0.5" />
+                  {/* Leader line from secondary circle */}
+                  <line x1="268" y1="58" x2="248" y2="78" stroke="hsl(235,80%,68%)" strokeWidth="0.5" strokeOpacity="0.15" strokeDasharray="3 2" />
+                </svg>
               </div>
             </div>
           </section>
@@ -288,7 +337,7 @@ export default function Page() {
               <dl className="flex divide-x divide-[hsl(222,25%,14%)]">
                 {[
                   { value: "2 yrs",   label: "Industry experience" },
-                  { value: "3.58",    label: "Bachelor's GPA" },
+                  { value: "FR / EN", label: "Bilingual" },
                   { value: "FE Exam", label: "NCEES Certified" },
                   { value: "M.Sc.",   label: "HES-SO Lausanne" },
                 ].map((s) => (
@@ -309,18 +358,16 @@ export default function Page() {
               <h2 className="text-xl font-semibold text-white mb-5">About me</h2>
               <div className="space-y-4 text-[15px] leading-7 text-[hsl(215,15%,60%)]">
                 <p>
-                  Mechanical engineer with a strong foundation in fluid dynamics, FEA, and product
-                  design. I spent two years at Griswold Industries (CLA-VAL) designing and optimizing
-                  aircraft refueling system components — nozzles, valves, and couplers — from initial
-                  design through testing and validation.
+                  I'm a mechanical engineer with a B.Sc. from <span className="text-[hsl(215,25%,80%)]">Cal Poly Pomona</span> (California, USA) — a polytechnic university with a strong emphasis on hands-on engineering education. My degree gave me a rigorous foundation in fluid dynamics, thermodynamics, machine design, materials science, and structural analysis.
                 </p>
                 <p>
-                  Currently pursuing an M.Sc. in Mechanical Engineering at HES-SO Lausanne, developing
-                  advanced analytical and simulation skills to complement my industry experience.
+                  After graduating, I joined <span className="text-[hsl(215,25%,80%)]">Griswold Industries (CLA-VAL)</span> as a Design Engineer, where I spent two years designing and optimizing components for aircraft refueling systems — nozzles, inline valves, and hydrant couplers. I worked across the full product lifecycle: concept design in SolidWorks, FEA structural validation in FEMAP, custom test fixture design, and compliance testing against industry standards.
                 </p>
                 <p>
-                  Outside of engineering, I enjoy 3D printing, Arduino/Raspberry Pi projects,
-                  soccer, snowboarding, and music.
+                  I'm currently pursuing an <span className="text-[hsl(215,25%,80%)]">M.Sc. in Mechanical Engineering at HES-SO Master</span> in Lausanne, Switzerland, deepening my analytical and research capabilities in advanced simulation and applied mechanics.
+                </p>
+                <p>
+                  I'm a <span className="text-[hsl(215,25%,80%)]">native French speaker</span> and <span className="text-[hsl(215,25%,80%)]">fluent in English</span> — I completed my undergraduate degree entirely in English in the US. I'm comfortable working in international, multicultural environments and across technical and business contexts.
                 </p>
               </div>
               <div className="mt-8 flex gap-4">
@@ -389,6 +436,56 @@ export default function Page() {
                       </span>
                     ))}
                   </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Interests */}
+          <section className="border-t border-[hsl(222,25%,14%)] mx-auto max-w-5xl px-6 py-14">
+            <h2 className="text-xs font-medium text-[hsl(215,15%,40%)] uppercase tracking-widest mb-8">
+              Interests
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  icon: "◈",
+                  title: "3D Printing",
+                  desc: "Designing and printing mechanical parts, enclosures, and gadgets. I enjoy the full loop from CAD model to physical object.",
+                  color: "text-indigo-400",
+                },
+                {
+                  icon: "⬡",
+                  title: "Electronics & Raspberry Pi",
+                  desc: "Building small automation projects and experimenting with embedded Linux, sensors, and custom PCB ideas.",
+                  color: "text-violet-400",
+                },
+                {
+                  icon: "⬟",
+                  title: "Soccer",
+                  desc: "Playing regularly — it keeps me sharp, competitive, and thinking in terms of teamwork and positioning.",
+                  color: "text-emerald-400",
+                },
+                {
+                  icon: "◇",
+                  title: "Snowboarding",
+                  desc: "Riding in the Alps when the season allows. A good reset from the desk, and a reminder that physics matters.",
+                  color: "text-sky-400",
+                },
+                {
+                  icon: "◎",
+                  title: "Music",
+                  desc: "Listening and occasionally playing. Music helps me focus during long design sessions and unwind after them.",
+                  color: "text-amber-400",
+                },
+              ].map((interest) => (
+                <div
+                  key={interest.title}
+                  className={`glow-card rounded-2xl border ${C.border} ${C.card} p-5`}
+                >
+                  <div className={`text-xl mb-3 ${interest.color}`}>{interest.icon}</div>
+                  <h3 className="font-semibold text-white text-sm mb-1.5">{interest.title}</h3>
+                  <p className="text-sm text-[hsl(215,15%,55%)] leading-6">{interest.desc}</p>
                 </div>
               ))}
             </div>
