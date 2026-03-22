@@ -106,19 +106,68 @@ type Project = {
 };
 
 const workProjects: Project[] = [
-  // Add professional/industry projects here
+  {
+    num:    "01",
+    label:  "CLA-VAL",
+    color:  "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+    title:  "Manifold — Pilot Block",
+    period: "2023 – 2025",
+    desc:   "Aluminum hog-out manifold used to control the piston of a main valve via solenoids and pressure regulators, allowing or restricting flow in the system.",
+    tools:  ["SolidWorks", "GD&T", "Aluminum Machining", "Fluid Systems"],
+    images: ["/projects/manifold-drawing.jpg", "/projects/manifold-3d.jpg"],
+  },
+  {
+    num:    "02",
+    label:  "CLA-VAL",
+    color:  "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+    title:  "Bypass Valve — 381GF",
+    period: "2023",
+    desc:   "Bypass valve assembly combining aluminum hog-outs and castings. Opens once system pressure reaches a pre-set value — spring and set-screw dictate the cracking pressure.",
+    tools:  ["SolidWorks", "Assembly Design", "GD&T", "Pressure Systems"],
+    images: ["/projects/bypass-drawing.jpg", "/projects/bypass-3d.jpg"],
+  },
+  {
+    num:    "03",
+    label:  "CLA-VAL",
+    color:  "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+    title:  "Test Fixture — 1626M",
+    period: "2024",
+    desc:   "Modular test fixture covering valve sizes from 6 in to 27 in. Hermetically seals valves via a custom rubber insert and adjustable clamp. Composed of aluminum parts and off-the-shelf hardware.",
+    tools:  ["SolidWorks", "Fixture Design", "Testing", "Aluminum Machining"],
+    images: ["/projects/fixture-drawing.jpg", "/projects/fixture-3d.jpg"],
+  },
+  {
+    num:    "04",
+    label:  "CLA-VAL",
+    color:  "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+    title:  "Spring Compression Tool — X149",
+    period: "2024",
+    desc:   "2-in-1 Delrin compression tool for disassembling and reassembling pistons across two different product lines. Compact design keeps all parts attached to avoid loss — built for field use.",
+    tools:  ["SolidWorks", "Delrin", "Tool Design", "GD&T"],
+    images: ["/projects/spring-tool-drawing.jpg", "/projects/spring-tool-3d.jpg"],
+  },
+  {
+    num:    "05",
+    label:  "CLA-VAL",
+    color:  "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
+    title:  "Wire Rope Hub — Press Master",
+    period: "2024",
+    desc:   "Custom aluminum hog-out hub mounted on a 200-ton press shaft via woodruff keys, set screws, and clamping force. Designed to increase shaft diameter and prevent wire cable failure due to bending radius.",
+    tools:  ["SolidWorks", "GD&T", "Aluminum Machining", "Mechanical Design"],
+    images: ["/projects/hub-drawing.jpg", "/projects/hub-3d.jpg"],
+  },
 ];
 
 const academicProjects: Project[] = [
   {
     num:    "01",
     label:  "Academic",
-    color:  "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
-    title:  "NGCP Payload System — UGV",
+    color:  "bg-violet-500/10 text-violet-300 border-violet-500/20",
+    title:  "Unmanned Ground Vehicle — NGCP Senior Project",
     period: "2022 – 2023",
-    desc:   "Designed and manufactured a complete payload system for an Unmanned Ground Vehicle for the NGCP competition. Integrated with a multidisciplinary team across the full development cycle.",
-    tools:  ["SolidWorks", "FEA", "3D Printing", "Analysis", "Teamwork"],
-    // images: ["/projects/ngcp-1.jpg", "/projects/ngcp-2.jpg"],
+    desc:   "Full UGV design for the NGCP competition. Mission: drive to GPS targets, retrieve a care package and miniature figure (injured hiker), then hand off to a UAV. Responsible for the full payload assembly including rotation plate, linkage bar, leverage arm, linear actuator, storage unit, and separation sub-assembly.",
+    tools:  ["SolidWorks", "FEA", "3D Printing", "Team Design", "Systems Integration"],
+    images: ["/projects/ugv-assembly.jpg", "/projects/ugv-3d.jpg"],
   },
 ];
 
