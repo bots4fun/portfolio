@@ -114,7 +114,7 @@ const workProjects: Project[] = [
     period: "2023 – 2025",
     desc:   "Aluminum hog-out manifold used to control the piston of a main valve via solenoids and pressure regulators, allowing or restricting flow in the system.",
     tools:  ["SolidWorks", "GD&T", "Aluminum Machining", "Fluid Systems"],
-    images: ["/projects/manifold-drawing.jpg", "/projects/manifold-3d.jpg"],
+    images: ["/projects/manifold-3d.png"],
   },
   {
     num:    "02",
