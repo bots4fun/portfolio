@@ -662,12 +662,6 @@ export default function Page() {
               </p>
               <h2 className="text-3xl font-bold text-white">Projects</h2>
             </div>
-            <a
-              href="https://github.com/bots4fun"
-              className="text-sm text-[hsl(235,80%,72%)] hover:text-[hsl(235,80%,82%)] transition-colors"
-            >
-              GitHub →
-            </a>
           </div>
 
           {[
@@ -758,7 +752,6 @@ export default function Page() {
                 {[
                   { label: "Email",    value: "vgarnier0125@gmail.com", href: "mailto:vgarnier0125@gmail.com" },
                   { label: "Phone",    value: "+41 78 601 73 05",       href: "tel:+41786017305" },
-                  { label: "GitHub",   value: "github.com/bots4fun",    href: "https://github.com/bots4fun" },
                   { label: "Location", value: "Lausanne, Switzerland",  href: null },
                 ].map((item, idx, arr) => {
                   const inner = (
