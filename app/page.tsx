@@ -695,13 +695,13 @@ export default function Page() {
                             <button
                               key={i}
                               onClick={() => setLb(src)}
-                              className="relative shrink-0 h-44 w-full first:w-full overflow-hidden bg-[hsl(222,28%,9%)]"
+                              className="relative shrink-0 w-full bg-[hsl(222,28%,9%)] flex items-center justify-center p-2"
                               style={{ minWidth: p.images!.length > 1 ? "60%" : "100%" }}
                             >
                               <img
                                 src={src}
                                 alt={`${p.title} ${i + 1}`}
-                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                className="w-full h-auto max-h-64 object-contain hover:opacity-90 transition-opacity duration-300"
                               />
                             </button>
                           ))}
