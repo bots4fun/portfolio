@@ -457,13 +457,13 @@ export default function Page() {
                 {
                   icon: "⬡",
                   title: "Electronics & Raspberry Pi",
-                  desc: "Building small automation projects and experimenting with embedded Linux, sensors, and custom PCB ideas.",
+                  desc: "Building small automation projects and experimenting with different sensors.",
                   color: "text-violet-400",
                 },
                 {
                   icon: "⬟",
                   title: "Soccer",
-                  desc: "Playing regularly — it keeps me sharp, competitive, and thinking in terms of teamwork and positioning.",
+                  desc: "I love playing, watching and discussing about the beautiful game.",
                   color: "text-emerald-400",
                 },
                 {
