@@ -65,7 +65,7 @@ const workProjects: Project[] = [
   { num:"03", label:"CLA-VAL", accent:"text-orange-400",
     title:"Test Fixture — 1626M", period:"2024",
     desc:"Custom test fixture designed to validate the performance of the 1626M valve under simulated operating conditions. Ensured repeatable clamping and alignment for consistent test results.",
-    tools:["SolidWorks","FEA","GD&T","Testing & Validation"], images:["/projects/fixture-3d.png"] },
+    tools:["SolidWorks","GD&T","Testing & Validation"], images:["/projects/fixture-3d.png"] },
   { num:"04", label:"CLA-VAL", accent:"text-orange-400",
     title:"Spring Compression Tool — X149", period:"2024",
     desc:"Specialized tool to safely compress and hold the internal spring of the X149 valve during assembly. Designed to reduce assembly time and improve technician safety.",
@@ -79,16 +79,16 @@ const workProjects: Project[] = [
 const academicProjects: Project[] = [
   { num:"01", label:"Academic", accent:"text-violet-400",
     title:"Unmanned Ground Vehicle — NGCP Senior Project", period:"2022 – 2023",
-    desc:"Full UGV design for the NGCP competition. Responsible for the full payload assembly including rotation plate, linkage bar, leverage arm, linear actuator, storage unit, and separation sub-assembly.",
+    desc:"Full UGV design for the NGCP project. Responsible for the full payload assembly.",
     tools:["SolidWorks","FEA","3D Printing","Team Design","Systems Integration"], images:["/projects/ugv-3d.png"] },
   { num:"02", label:"Academic", accent:"text-violet-400",
     title:"CFD Simulations — ANSYS Fluent", period:"2024",
     desc:"Two CFD studies: (1) NACA 4412 airfoil — lift and drag across 0°–15° AoA, comparing k-ε, k-ω SST, and Spalart-Allmaras turbulence models. (2) Liquid sloshing in a spherical tank using VOF multiphase method.",
-    tools:["ANSYS Fluent","CFD","VOF Multiphase","Turbulence Modeling","Mesh Generation"],
+    tools:["ANSYS Fluent","CFD","Turbulence Modeling"],
     images:["/projects/naca4412-cfd.png","/projects/ballottement-cfd.png"] },
   { num:"03", label:"Academic", accent:"text-violet-400",
-    title:"Smart Insole — Energy Harvesting Wearable", period:"2025 – Present",
-    desc:"Design and fabrication of a smart insole that harvests energy from walking to power embedded electronics. The insole is manufactured via silicone injection molding with PCB components overmolded directly into the sole structure. The mold was designed to fully encapsulate the electronics while maintaining the flexibility and comfort required for a wearable device. The energy harvesting mechanism enables fully autonomous operation — no battery required.",
+    title:"Smart Insole — Energy Harvesting Wearable", period:"Ongoing",
+    desc:"Design and fabrication of a smart insole that harvests energy from walking to power embedded electronics. The insole is manufactured via silicone injection molding with PCB components overmolded directly into the sole structure. The mold was designed to fully encapsulate the electronics while maintaining the flexibility and comfort required for a wearable device.",
     tools:["SolidWorks","Injection Molding","Silicone","Overmolding","PCB Integration","Energy Harvesting","Wearable Design"],
     images:["/projects/smart-insole-mold.png"] },
 ];
@@ -101,7 +101,7 @@ const personalProjects: Project[] = [
   { num:"02", label:"Personal", accent:"text-sky-400",
     title:"3D Printing Projects", period:"Ongoing",
     desc:"Designing and printing mechanical parts, enclosures, and functional prototypes. Full loop from CAD model to physical object.",
-    tools:["3D Printing","CAD","Fusion 360","Prototyping"] },
+    tools:["SolidWorks","Prototyping","Arduino"] },
 ];
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────
