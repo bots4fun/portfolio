@@ -6,94 +6,133 @@
 }
 
 html, body {
-  background-color: hsl(222, 22%, 7%);
+  background-color: hsl(220, 20%, 6%);
   color: hsl(40, 15%, 90%);
+  scroll-behavior: smooth;
 }
 
-/* ── Sidebar fine grid ────────────────────────────────────────────────── */
-.sidebar-grid {
-  background-image:
-    linear-gradient(hsla(210,20%,100%,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, hsla(210,20%,100%,0.025) 1px, transparent 1px);
-  background-size: 28px 28px;
+/* ── CSS custom property for rotating gradient border ─────────────────── */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
-/* ── Gradient text (dark→orange) ─────────────────────────────────────── */
+/* ── Keyframes ────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-16px); }
+}
+@keyframes spin-cw {
+  to { transform: rotate(360deg); }
+}
+@keyframes spin-ccw {
+  to { transform: rotate(-360deg); }
+}
+@keyframes rotate-angle {
+  to { --angle: 360deg; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 0.9; transform: scale(1.08); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes draw-line {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(6px); opacity: 0.4; }
+}
+
+/* ── Hero text entrance (staggered) ──────────────────────────────────── */
+.hero-in { animation: fade-up 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.d0  { animation-delay: 0ms; }
+.d1  { animation-delay: 120ms; }
+.d2  { animation-delay: 240ms; }
+.d3  { animation-delay: 360ms; }
+.d4  { animation-delay: 480ms; }
+.d5  { animation-delay: 600ms; }
+.d6  { animation-delay: 720ms; }
+
+/* ── Scroll-triggered reveal ─────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+/* ── Photo frame – rotating gradient border ──────────────────────────── */
+.photo-border {
+  background: conic-gradient(
+    from var(--angle),
+    hsl(28,100%,60%) 0deg,
+    transparent 70deg,
+    transparent 290deg,
+    hsl(28,100%,60%) 360deg
+  );
+  animation: rotate-angle 3.5s linear infinite;
+}
+.photo-float {
+  animation: float 6s ease-in-out infinite;
+}
+.ring-cw {
+  animation: spin-cw 25s linear infinite;
+}
+.ring-ccw {
+  animation: spin-ccw 18s linear infinite;
+}
+.glow-bg {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+.scroll-indicator {
+  animation: scroll-bounce 1.8s ease-in-out infinite;
+}
+
+/* ── Gradient heading ────────────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(140deg, hsl(40,20%,96%) 20%, hsl(28,100%,62%) 100%);
+  background: linear-gradient(135deg, hsl(40,15%,96%) 30%, hsl(28,100%,62%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-orange {
+  background: linear-gradient(135deg, hsl(28,100%,70%) 0%, hsl(16,100%,60%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── Page enter animations ────────────────────────────────────────────── */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes slide-right {
-  from { opacity: 0; transform: translateX(-16px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes expand-width {
-  from { width: 0; }
-  to   { width: 100%; }
-}
-
-.anim-fade-up   { animation: fade-up    0.5s cubic-bezier(0.16,1,0.3,1) both; }
-.anim-fade-in   { animation: fade-in    0.4s ease both; }
-.anim-slide-r   { animation: slide-right 0.4s cubic-bezier(0.16,1,0.3,1) both; }
-
-.d1  { animation-delay: 60ms; }
-.d2  { animation-delay: 130ms; }
-.d3  { animation-delay: 200ms; }
-.d4  { animation-delay: 270ms; }
-.d5  { animation-delay: 340ms; }
-.d6  { animation-delay: 410ms; }
-
-/* ── Orange underline draw on hover ──────────────────────────────────── */
-.underline-draw {
-  position: relative;
-}
-.underline-draw::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  height: 1px;
-  width: 0;
-  background: hsl(28, 100%, 60%);
-  transition: width 0.25s ease;
-}
-.underline-draw:hover::after { width: 100%; }
-
-/* ── Card ─────────────────────────────────────────────────────────────── */
+/* ── Card hover ──────────────────────────────────────────────────────── */
 .card-hover {
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.25s ease, border-color 0.25s ease,
+              transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease;
 }
 .card-hover:hover {
-  background: hsl(222, 20%, 13%) !important;
-  border-color: hsla(28, 100%, 60%, 0.3) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px hsla(222, 20%, 0%, 0.3);
+  background: hsl(220,20%,11%) !important;
+  border-color: hsla(28,100%,60%,0.28) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px hsla(0,0%,0%,0.35), 0 0 0 1px hsla(28,100%,60%,0.08);
 }
 
-/* ── Orange accent line for timeline ─────────────────────────────────── */
-.timeline-line::before {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 12px;
-  bottom: 0;
-  width: 1px;
-  background: hsl(222, 20%, 18%);
+/* ── Project card image zoom ─────────────────────────────────────────── */
+.img-zoom { overflow: hidden; }
+.img-zoom img {
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
 }
+.project-card:hover .img-zoom img { transform: scale(1.07); }
 
-/* ── Scrollbar ────────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; }
+/* ── Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: hsl(222,20%,20%); border-radius: 9999px; }
+::-webkit-scrollbar-thumb { background: hsl(220,20%,22%); border-radius: 9999px; }
