@@ -86,6 +86,11 @@ const academicProjects: Project[] = [
     desc:"Two CFD studies: (1) NACA 4412 airfoil — lift and drag across 0°–15° AoA, comparing k-ε, k-ω SST, and Spalart-Allmaras turbulence models. (2) Liquid sloshing in a spherical tank using VOF multiphase method.",
     tools:["ANSYS Fluent","CFD","VOF Multiphase","Turbulence Modeling","Mesh Generation"],
     images:["/projects/naca4412-cfd.png","/projects/ballottement-cfd.png"] },
+  { num:"03", label:"Academic", accent:"text-violet-400",
+    title:"Smart Insole — Energy Harvesting Wearable", period:"2025 – Present",
+    desc:"Design and fabrication of a smart insole that harvests energy from walking to power embedded electronics. The insole is manufactured via silicone injection molding with PCB components overmolded directly into the sole structure. The mold was designed to fully encapsulate the electronics while maintaining the flexibility and comfort required for a wearable device. The energy harvesting mechanism enables fully autonomous operation — no battery required.",
+    tools:["SolidWorks","Injection Molding","Silicone","Overmolding","PCB Integration","Energy Harvesting","Wearable Design"],
+    images:["/projects/smart-insole-mold.png"] },
 ];
 
 const personalProjects: Project[] = [
