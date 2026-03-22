@@ -6,41 +6,94 @@
 }
 
 html, body {
-  background-color: hsl(38, 35%, 96%);
-  color: hsl(220, 20%, 10%);
+  background-color: hsl(222, 22%, 7%);
+  color: hsl(40, 15%, 90%);
 }
 
-/* Subtle dot grid for main content */
-.dot-grid {
-  background-image: radial-gradient(circle, hsla(220, 20%, 30%, 0.07) 1px, transparent 1px);
-  background-size: 26px 26px;
+/* ── Sidebar fine grid ────────────────────────────────────────────────── */
+.sidebar-grid {
+  background-image:
+    linear-gradient(hsla(210,20%,100%,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, hsla(210,20%,100%,0.025) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-/* Page-section enter */
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fade-in-up { animation: fade-in-up 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.d1 { animation-delay: 80ms; }
-.d2 { animation-delay: 160ms; }
-.d3 { animation-delay: 240ms; }
-.d4 { animation-delay: 320ms; }
-
-/* Gradient text */
+/* ── Gradient text (dark→orange) ─────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, hsl(220, 20%, 8%) 0%, hsl(220, 65%, 30%) 100%);
+  background: linear-gradient(140deg, hsl(40,20%,96%) 20%, hsl(28,100%,62%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glowing card border on hover */
-.glow-card {
-  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+/* ── Page enter animations ────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-.glow-card:hover {
-  box-shadow: 0 0 0 1px hsla(220, 65%, 35%, 0.2), 0 8px 32px hsla(220, 65%, 35%, 0.08);
-  border-color: hsla(220, 65%, 35%, 0.25) !important;
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slide-right {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes expand-width {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+.anim-fade-up   { animation: fade-up    0.5s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-fade-in   { animation: fade-in    0.4s ease both; }
+.anim-slide-r   { animation: slide-right 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+
+.d1  { animation-delay: 60ms; }
+.d2  { animation-delay: 130ms; }
+.d3  { animation-delay: 200ms; }
+.d4  { animation-delay: 270ms; }
+.d5  { animation-delay: 340ms; }
+.d6  { animation-delay: 410ms; }
+
+/* ── Orange underline draw on hover ──────────────────────────────────── */
+.underline-draw {
+  position: relative;
+}
+.underline-draw::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: hsl(28, 100%, 60%);
+  transition: width 0.25s ease;
+}
+.underline-draw:hover::after { width: 100%; }
+
+/* ── Card ─────────────────────────────────────────────────────────────── */
+.card-hover {
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  background: hsl(222, 20%, 13%) !important;
+  border-color: hsla(28, 100%, 60%, 0.3) !important;
   transform: translateY(-2px);
+  box-shadow: 0 8px 32px hsla(222, 20%, 0%, 0.3);
 }
+
+/* ── Orange accent line for timeline ─────────────────────────────────── */
+.timeline-line::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 12px;
+  bottom: 0;
+  width: 1px;
+  background: hsl(222, 20%, 18%);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(222,20%,20%); border-radius: 9999px; }
