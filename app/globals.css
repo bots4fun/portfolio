@@ -6,9 +6,9 @@
 }
 
 html, body {
-  /* Deep dark with cool blue undertone — Josh Comeau signature */
-  background-color: hsl(222, 28%, 7%);
-  color: hsl(215, 25%, 92%);
+  /* Warm off-white + ink */
+  background-color: hsl(38, 35%, 96%);
+  color: hsl(220, 20%, 10%);
 }
 
 /* Page-section enter */
@@ -24,7 +24,7 @@ html, body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, hsl(215, 25%, 95%) 0%, hsl(235, 80%, 80%) 100%);
+  background: linear-gradient(135deg, hsl(220, 20%, 8%) 0%, hsl(220, 65%, 30%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -35,7 +35,7 @@ html, body {
   transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 .glow-card:hover {
-  box-shadow: 0 0 0 1px hsla(235, 80%, 65%, 0.35), 0 8px 32px hsla(235, 80%, 65%, 0.08);
-  border-color: hsla(235, 80%, 65%, 0.3) !important;
+  box-shadow: 0 0 0 1px hsla(220, 65%, 35%, 0.2), 0 8px 32px hsla(220, 65%, 35%, 0.08);
+  border-color: hsla(220, 65%, 35%, 0.25) !important;
   transform: translateY(-2px);
 }
