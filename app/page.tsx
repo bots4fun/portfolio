@@ -639,7 +639,7 @@ export default function Page() {
             to meeting <span className="gradient-text-orange">you.</span>
           </h2>
           <p className="reveal reveal-delay-1 text-[16px] leading-7 text-[hsl(220,8%,52%)] mb-8 max-w-lg">
-            Whether it's a project, a thesis opportunity, or just a conversation — reach out anytime.
+            Please feel free to reach out for any inquiries, collaborations, or just to say hi! I'm always open to connecting with fellow engineers, potential employers, or anyone interested in discussing projects, ideas, or opportunities.
           </p>
 
           <div className="reveal reveal-delay-2 grid sm:grid-cols-[1fr_280px] gap-5 max-w-2xl">
