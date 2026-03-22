@@ -359,28 +359,37 @@ export default function Page() {
           <div className="grid lg:grid-cols-[1fr_300px] gap-16 items-start">
             <div>
               <h2 className="reveal text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight mb-10">
-                Designing parts<br />
-                that <span className="gradient-text-orange">fly.</span>
+                Designing what moves<br />
+                the <span className="gradient-text-orange">world.</span>
               </h2>
               <div className="reveal reveal-delay-1 space-y-5 text-[15px] leading-7 text-[hsl(220,8%,56%)] max-w-2xl">
                 <p>
                   I'm a mechanical engineer with a B.Sc. from{" "}
-                  <span className="text-[hsl(40,15%,82%)] font-medium">Cal Poly Pomona</span> — a polytechnic
+                  <span className="text-[hsl(40,15%,82%)] font-medium">Cal Poly Pomona</span> which is a polytechnic
                   university with a strong hands-on engineering culture. My degree built a rigorous foundation
                   in fluid dynamics, thermodynamics, machine design, and structural analysis.
                 </p>
                 <p>
                   For two years I worked at{" "}
                   <span className="text-[hsl(40,15%,82%)] font-medium">CLA-VAL (Griswold Industries)</span>{" "}
-                  designing components for aircraft refueling systems — nozzles, inline valves, hydrant couplers.
-                  Full product lifecycle: SolidWorks concept design, FEA validation in FEMAP, fixture design,
-                  and compliance testing.
+                  designing components for aircraft refueling systems such as nozzles, inline valves, hydrant couplers.
+                  Full product lifecycle: brainstorming, SolidWorks concept design, FEA validation, fixture design,
+                  and compliance testing. Improved my design for manufacturability skills and deepened my understanding of machine design and fluid systems.
                 </p>
                 <p>
                   Currently pursuing an{" "}
                   <span className="text-[hsl(40,15%,82%)] font-medium">M.Sc. at HES-SO Master in Lausanne</span>,
                   deepening research capabilities in advanced simulation and applied mechanics.
                   Native French speaker, fluent English.
+                </p>
+                <p>
+                  Outside of engineering, I enjoy{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium">3D printing</span> and building electronics projects,
+                  playing and watching{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium">soccer</span>,{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium">snowboarding</span> in the Alps when the season allows,
+                  and listening to{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium">music</span> — a good soundtrack for long design sessions.
                 </p>
               </div>
 
@@ -420,17 +429,6 @@ export default function Page() {
                 </div>
               ))}
 
-              {/* Interests */}
-              <div className="reveal reveal-delay-4 rounded-xl border border-white/[0.07] bg-white/[0.03] p-5 mt-2">
-                <p className="font-mono text-[10px] text-[hsl(220,8%,40%)] uppercase tracking-widest mb-4">Interests</p>
-                <div className="flex flex-wrap gap-2">
-                  {["3D Printing","Soccer","Snowboarding","Electronics","Music"].map(i => (
-                    <span key={i} className="font-mono text-[11px] text-[hsl(220,8%,52%)] border border-white/[0.07] rounded-full px-3 py-1">
-                      {i}
-                    </span>
-                  ))}
-                </div>
-              </div>
             </aside>
           </div>
         </div>
