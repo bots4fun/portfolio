@@ -99,11 +99,17 @@ const experience = [
   },
 ];
 
-const workProjects: { num: string; label: string; color: string; title: string; period: string; desc: string; tools: string[] }[] = [
+type Project = {
+  num: string; label: string; color: string;
+  title: string; period: string; desc: string;
+  tools: string[]; images?: string[];
+};
+
+const workProjects: Project[] = [
   // Add professional/industry projects here
 ];
 
-const academicProjects = [
+const academicProjects: Project[] = [
   {
     num:    "01",
     label:  "Academic",
@@ -112,10 +118,11 @@ const academicProjects = [
     period: "2022 – 2023",
     desc:   "Designed and manufactured a complete payload system for an Unmanned Ground Vehicle for the NGCP competition. Integrated with a multidisciplinary team across the full development cycle.",
     tools:  ["SolidWorks", "FEA", "3D Printing", "Analysis", "Teamwork"],
+    // images: ["/projects/ngcp-1.jpg", "/projects/ngcp-2.jpg"],
   },
 ];
 
-const personalProjects = [
+const personalProjects: Project[] = [
   {
     num:    "01",
     label:  "Personal",
@@ -124,6 +131,7 @@ const personalProjects = [
     period: "Jul – Aug 2021",
     desc:   "Designed and built a custom door lock mechanism combining Arduino control logic with 3D-printed mechanical components — concept to working prototype.",
     tools:  ["Arduino", "3D Printing", "CAD", "Embedded Systems"],
+    // images: ["/projects/doorlock-1.jpg"],
   },
   {
     num:    "02",
@@ -133,6 +141,7 @@ const personalProjects = [
     period: "Ongoing",
     desc:   "Designing and printing mechanical parts, enclosures, and functional prototypes. Each project covers the full loop from CAD model to physical object.",
     tools:  ["3D Printing", "CAD", "Fusion 360", "Prototyping"],
+    // images: ["/projects/print-1.jpg", "/projects/print-2.jpg"],
   },
 ];
 
@@ -629,23 +638,44 @@ export default function Page() {
               ) : (
                 <div className="grid gap-5 md:grid-cols-2">
                   {section.items.map((p) => (
-                    <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-7 flex flex-col`}>
-                      <div className="flex items-start justify-between mb-5">
-                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
-                          {p.label}
-                        </span>
-                        <span className="text-3xl font-black text-[hsl(222,25%,18%)] select-none leading-none">
-                          {p.num}
-                        </span>
+                    <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} flex flex-col overflow-hidden`}>
+                      {/* Image strip */}
+                      {p.images && p.images.length > 0 && (
+                        <div className="flex gap-1 overflow-x-auto scrollbar-none">
+                          {p.images.map((src, i) => (
+                            <button
+                              key={i}
+                              onClick={() => setLb(src)}
+                              className="relative shrink-0 h-44 w-full first:w-full overflow-hidden bg-[hsl(222,28%,9%)]"
+                              style={{ minWidth: p.images!.length > 1 ? "60%" : "100%" }}
+                            >
+                              <img
+                                src={src}
+                                alt={`${p.title} ${i + 1}`}
+                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                              />
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                      <div className="p-7 flex flex-col flex-1">
+                        <div className="flex items-start justify-between mb-5">
+                          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
+                            {p.label}
+                          </span>
+                          <span className="text-3xl font-black text-[hsl(222,25%,18%)] select-none leading-none">
+                            {p.num}
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-white mb-3">{p.title}</h3>
+                        <p className="text-sm text-[hsl(215,15%,55%)] leading-6 flex-1">{p.desc}</p>
+                        <div className="mt-6 pt-5 border-t border-[hsl(222,25%,16%)] flex flex-wrap gap-2">
+                          {p.tools.map((t) => (
+                            <span key={t} className="text-xs text-[hsl(215,15%,50%)] font-medium">{t}</span>
+                          ))}
+                        </div>
+                        <p className="mt-2 text-xs text-[hsl(215,15%,38%)]">{p.period}</p>
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-3">{p.title}</h3>
-                      <p className="text-sm text-[hsl(215,15%,55%)] leading-6 flex-1">{p.desc}</p>
-                      <div className="mt-6 pt-5 border-t border-[hsl(222,25%,16%)] flex flex-wrap gap-2">
-                        {p.tools.map((t) => (
-                          <span key={t} className="text-xs text-[hsl(215,15%,50%)] font-medium">{t}</span>
-                        ))}
-                      </div>
-                      <p className="mt-2 text-xs text-[hsl(215,15%,38%)]">{p.period}</p>
                     </article>
                   ))}
                 </div>
