@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Valéry Garnier – Digital Forensics & Cybersecurity",
-  description: "Portfolio of Valéry Garnier, Master's student in Forensic Science at UNIL, specializing in Digital Investigation and Cybersecurity.",
+  title: "Victor Garnier – Mechanical Engineer",
+  description: "Portfolio of Victor Garnier, Mechanical Engineer with 2 years of industry experience in aircraft refueling systems. Currently pursuing an M.Sc. at HES-SO Lausanne.",
 };
 
 export default function RootLayout({
