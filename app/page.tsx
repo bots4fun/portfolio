@@ -1,98 +1,94 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type PageKey = "about" | "cv" | "projects" | "contact";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const skills = [
-  { group: "Engineering",          items: ["Mechanical Design", "Fluid Dynamics (CFD)", "FEA Analysis", "Machine Design", "Hydraulics"] },
-  { group: "Software",             items: ["SolidWorks", "3D Experience", "MATLAB", "FEMAP", "Python"] },
-  { group: "Hardware",             items: ["3D Printing", "Arduino", "Raspberry Pi"] },
-  { group: "Languages",            items: ["French — Native", "English — Fluent"] },
+const skillGroups = [
+  { label: "Engineering",    items: ["Mechanical Design", "Fluid Dynamics (CFD)", "FEA Analysis", "Machine Design", "Hydraulics"] },
+  { label: "Software",       items: ["SolidWorks", "3D Experience", "MATLAB", "FEMAP", "Python"] },
+  { label: "Hardware",       items: ["3D Printing", "Arduino", "Raspberry Pi"] },
+  { label: "Languages",      items: ["French — Native", "English — Fluent"] },
 ];
 
-const education = [
+const cvRows: {
+  period: string;
+  title: string;
+  sub: string;
+  note?: string;
+  bullets?: string[];
+}[] = [
   {
-    degree:    "Master's in Mechanical Engineering",
-    school:    "HES-SO Master",
-    location:  "Lausanne, Switzerland",
-    period:    "2025 – Present",
-    note:      "",
-    desc:      "Advanced development of analytical and research capabilities in design, simulation, and applied mechanics.",
+    period: "2025 – Present",
+    title: "M.Sc. Mechanical Engineering",
+    sub: "HES-SO Master · Lausanne, Switzerland",
+    bullets: ["Advanced analytical and research capabilities in design, simulation, and applied mechanics."],
   },
   {
-    degree:    "Bachelor's in Mechanical Engineering",
-    school:    "Cal Poly Pomona",
-    location:  "Pomona, USA",
-    period:    "2018 – 2023",
-    note:      "GPA 3.58",
-    desc:      "Core curriculum covering mechanical design, fluid dynamics, thermodynamics, and materials science.",
+    period: "2018 – 2023",
+    title: "B.Sc. Mechanical Engineering",
+    sub: "Cal Poly Pomona · Pomona, USA",
+    note: "GPA 3.58",
+    bullets: ["Core curriculum in mechanical design, fluid dynamics, thermodynamics, and materials science."],
   },
-];
-
-const experience = [
   {
-    title:   "Design Engineer I",
-    company: "Griswold Industries DBA CLA-VAL",
-    period:  "2023 – 2025",
+    period: "2023 – 2025",
+    title: "Design Engineer I",
+    sub: "Griswold Industries DBA CLA-VAL",
     bullets: [
-      "Designed and optimized components for aircraft refueling systems — nozzles, inline valves, and couplers.",
-      "Collaborated with engineering and sales teams to develop new products based on customer requirements.",
-      "Developed and executed testing procedures to ensure compliance with industry standards.",
-      "Designed custom testing fixtures to streamline product validation and improve testing efficiency.",
+      "Designed and optimized components for aircraft refueling systems — nozzles, inline valves, couplers.",
+      "Collaborated with engineering and sales teams to develop and improve products based on customer requirements.",
+      "Developed and executed testing procedures ensuring compliance with industry standards.",
+      "Designed custom testing fixtures to streamline product validation and improve efficiency.",
       "Applied fluid dynamics principles to improve component performance and reliability.",
       "Performed structural analysis using SolidWorks FEA to evaluate durability under loading conditions.",
     ],
   },
   {
-    title:   "Engineering Lab Tech Asst — Intern",
-    company: "CLA-VAL Summer Internship",
-    period:  "Jun – Aug 2022",
+    period: "Jun – Aug 2022",
+    title: "Engineering Lab Tech Asst — Intern",
+    sub: "CLA-VAL Summer Internship",
     bullets: [
       "Designed six mechanical assemblies using SolidWorks to client specifications.",
       "Contributed to the full product development cycle from concept to implementation.",
       "Designed structural brackets for the new 353GF coupler generation.",
-      "Assisted in on-site installation and troubleshooting of industrial valves.",
     ],
   },
   {
-    title:   "Co-Founder",
-    company: "Safaran Boutique",
-    period:  "2022 – 2023",
+    period: "2022 – 2023",
+    title: "Co-Founder",
+    sub: "Safaran Boutique",
     bullets: [
       "Co-founded and operated a retail business with two partners.",
       "Managed sourcing, logistics, sales, and operational strategy.",
     ],
   },
+  {
+    period: "Completed",
+    title: "NCEES — Fundamentals of Engineering (FE)",
+    sub: "Certification · NCEES",
+    bullets: ["First step toward becoming a licensed Professional Engineer."],
+  },
 ];
 
-const engProjects = [
+const projects = [
   {
-    label: "Academic",
+    num: "01",
     title: "NGCP Payload System — UGV",
+    type: "Academic",
     period: "2022 – 2023",
-    desc: "Designed and manufactured a complete payload system for an Unmanned Ground Vehicle as part of the NGCP competition.",
-    bullets: [
-      "Designed and manufactured a full payload system for a UGV platform.",
-      "Used SolidWorks, MATLAB, FEMAP, and 3D printing during development.",
-      "Integrated system with a multidisciplinary team.",
-      "Presented technical results during design reviews.",
-    ],
+    desc: "Designed and manufactured a complete payload system for an Unmanned Ground Vehicle as part of the NGCP competition. Integrated system with a multidisciplinary team.",
     tools: ["SolidWorks", "MATLAB", "FEMAP", "3D Printing"],
   },
   {
-    label: "Personal",
+    num: "02",
     title: "Arduino Door Lock Mechanism",
+    type: "Personal",
     period: "Jul – Aug 2021",
-    desc: "Designed and built a custom door lock mechanism combining Arduino control logic with 3D-printed mechanical components.",
-    bullets: [
-      "Full design cycle from concept to working prototype.",
-      "All mechanical parts 3D-printed and assembled.",
-      "Programmed Arduino control logic from scratch.",
-    ],
+    desc: "Designed and built a custom door lock mechanism combining Arduino control logic with 3D-printed mechanical components — from concept to working prototype.",
     tools: ["Arduino", "3D Printing", "CAD"],
   },
 ];
@@ -109,9 +105,10 @@ const prints: { title: string; desc: string; src: string | null }[] = [
 // ─── PAGE ────────────────────────────────────────────────────────────────────
 
 export default function Page() {
-  const [page, setPage]       = useState<PageKey>("about");
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [lightbox, setLightbox]     = useState<string | null>(null);
+  const [page, setPage]         = useState<PageKey>("about");
+  const [mobileOpen, setMobile] = useState(false);
+  const [lightbox, setLightbox] = useState<string | null>(null);
+  const glowRef                 = useRef<HTMLDivElement>(null);
 
   const nav: { id: PageKey; label: string }[] = [
     { id: "about",    label: "About" },
@@ -120,232 +117,197 @@ export default function Page() {
     { id: "contact",  label: "Contact" },
   ];
 
-  const go = (id: PageKey) => { setPage(id); setMobileOpen(false); };
+  const go = (id: PageKey) => { setPage(id); setMobile(false); };
+
+  // Cursor-following warm glow — direct DOM write, zero React re-render
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (glowRef.current) {
+      glowRef.current.style.background =
+        `radial-gradient(700px circle at ${e.clientX}px ${e.clientY}px, rgba(214,196,168,0.13), transparent 55%)`;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div
+      className="min-h-screen bg-stone-50 text-stone-900 selection:bg-stone-200"
+      onMouseMove={onMouseMove}
+    >
+      {/* Cursor glow — fixed so it works across the whole page */}
+      <div ref={glowRef} className="fixed inset-0 pointer-events-none z-10" />
 
       {/* Lightbox */}
       {lightbox && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/80 backdrop-blur-sm p-4"
           onClick={() => setLightbox(null)}
         >
           <div className="relative" onClick={(e) => e.stopPropagation()}>
-            <img src={lightbox} alt="3D Print" className="max-h-[88vh] max-w-[90vw] object-contain rounded-xl shadow-2xl" />
+            <img src={lightbox} alt="" className="max-h-[90vh] max-w-[90vw] object-contain" />
             <button
               onClick={() => setLightbox(null)}
-              className="absolute -top-4 -right-4 h-8 w-8 rounded-full bg-white shadow-md text-slate-500 hover:text-slate-900 transition-colors text-sm font-medium"
+              className="absolute -top-10 right-0 text-sm text-stone-400 hover:text-white transition-colors"
             >
-              ✕
+              Close ✕
             </button>
           </div>
         </div>
       )}
 
       {/* ── HEADER ── */}
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-100">
-        <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
+      <header className="relative z-20 sticky top-0 bg-stone-50/90 backdrop-blur border-b border-stone-200">
+        <div className="mx-auto max-w-5xl px-6 h-14 flex items-center justify-between">
 
-          <button onClick={() => go("about")} className="text-left group">
-            <p className="text-xs font-medium text-slate-400 tracking-widest uppercase">Portfolio</p>
-            <p className="text-base font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
-              Victor Garnier
-            </p>
+          <button
+            onClick={() => go("about")}
+            className="text-sm font-semibold text-stone-900 hover:text-stone-500 transition-colors"
+          >
+            Victor Garnier
           </button>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {nav.map((item) => (
               <button
                 key={item.id}
                 onClick={() => go(item.id)}
-                className={`text-sm font-medium pb-0.5 border-b transition-colors ${
+                className={`text-sm transition-colors ${
                   page === item.id
-                    ? "text-slate-900 border-slate-900"
-                    : "text-slate-400 border-transparent hover:text-slate-700"
+                    ? "text-stone-900 font-medium"
+                    : "text-stone-400 hover:text-stone-700"
                 }`}
               >
                 {item.label}
               </button>
             ))}
-          </nav>
-
-          <div className="flex items-center gap-3">
             <a
               href="/Victor_Garnier_CV.pdf"
-              className="hidden md:block text-sm font-medium border border-slate-200 rounded-lg px-4 py-2 text-slate-600 hover:border-slate-400 transition-colors"
+              className="text-sm text-stone-400 hover:text-stone-700 transition-colors"
             >
-              Download CV
+              ↓ CV
             </a>
-            <button
-              className="flex flex-col gap-[5px] p-1 md:hidden"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Menu"
-            >
-              <span className={`block h-px w-5 bg-slate-600 transition-transform origin-center ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-              <span className={`block h-px w-5 bg-slate-600 transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-px w-5 bg-slate-600 transition-transform origin-center ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
-            </button>
-          </div>
+          </nav>
+
+          <button
+            onClick={() => setMobile(!mobileOpen)}
+            className="md:hidden flex flex-col gap-[5px] p-1"
+            aria-label="Menu"
+          >
+            <span className={`block h-px w-5 bg-stone-600 transition-transform origin-center ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+            <span className={`block h-px w-5 bg-stone-600 ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-px w-5 bg-stone-600 transition-transform origin-center ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+          </button>
         </div>
 
         {mobileOpen && (
-          <div className="border-t border-slate-100 bg-white px-6 py-4 md:hidden space-y-1">
+          <div className="border-t border-stone-100 bg-stone-50 px-6 py-5 md:hidden space-y-4">
             {nav.map((item) => (
               <button
                 key={item.id}
                 onClick={() => go(item.id)}
-                className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                  page === item.id ? "bg-slate-100 text-slate-900" : "text-slate-500 hover:bg-slate-50"
-                }`}
+                className={`block text-sm ${page === item.id ? "text-stone-900 font-medium" : "text-stone-400"}`}
               >
                 {item.label}
               </button>
             ))}
-            <a
-              href="/Victor_Garnier_CV.pdf"
-              className="block px-3 py-2.5 text-sm font-medium text-slate-500"
-            >
-              Download CV
-            </a>
+            <a href="/Victor_Garnier_CV.pdf" className="block text-sm text-stone-400">↓ CV</a>
           </div>
         )}
       </header>
 
-      {/* ── MAIN ── */}
-      <main>
+      {/* ── CONTENT ── */}
+      <div className="relative z-20">
 
-        {/* ── ABOUT ── */}
+        {/* ═══ ABOUT ═══ */}
         {page === "about" && (
-          <div className="page-section">
+          <div>
+            {/* Hero */}
+            <section className="mx-auto max-w-5xl px-6 pt-20 pb-16 md:pt-28 md:pb-20">
+              <p className="slide-up text-xs font-medium uppercase tracking-[0.25em] text-stone-400">
+                Mechanical Engineer
+              </p>
 
-            {/* Hero with animated gradient */}
-            <section className="relative overflow-hidden bg-slate-50 border-b border-slate-100">
-              {/* Animated blobs */}
-              <div className="absolute inset-0 pointer-events-none" aria-hidden>
-                <div className="blob absolute -top-24 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-100/60 blur-3xl" />
-                <div className="blob blob-d1 absolute top-10 right-1/4 w-[400px] h-[400px] rounded-full bg-indigo-100/50 blur-3xl" />
-                <div className="blob blob-d2 absolute bottom-0 left-1/3 w-[350px] h-[350px] rounded-full bg-slate-200/60 blur-3xl" />
-              </div>
+              <h1
+                className="slide-up slide-up-d1 font-bold text-stone-900 leading-none mt-5"
+                style={{ fontSize: "clamp(52px, 9vw, 108px)", letterSpacing: "-0.025em" }}
+              >
+                Victor
+                <br />
+                Garnier
+              </h1>
 
-              <div className="relative mx-auto max-w-5xl px-6 py-24 md:py-32">
-                <p className="text-sm font-medium text-blue-600 tracking-wide">
-                  Mechanical Engineer
-                </p>
-                <h1 className="mt-4 text-5xl md:text-7xl font-bold tracking-tight text-slate-900 leading-[1.05]">
-                  Victor Garnier
-                </h1>
-                <p className="mt-6 max-w-xl text-lg text-slate-500 leading-relaxed">
+              <div className="slide-up slide-up-d2 mt-10 h-px bg-stone-200" />
+
+              <div className="slide-up slide-up-d3 mt-10 grid gap-8 md:grid-cols-[1fr_auto]">
+                <p className="max-w-md text-[15px] leading-7 text-stone-500">
                   2 years designing aircraft refueling systems at CLA-VAL.
                   Strong background in fluid dynamics, FEA, and mechanical design.
-                  Currently pursuing an M.Sc. at HES-SO Lausanne.
+                  Currently pursuing an M.Sc. in Mechanical Engineering at HES-SO Lausanne.
                 </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <button
-                    onClick={() => go("contact")}
-                    className="bg-slate-900 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-slate-700 transition-colors"
-                  >
-                    Get in touch
-                  </button>
-                  <a
-                    href="/Victor_Garnier_CV.pdf"
-                    className="border border-slate-200 bg-white px-6 py-3 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
-                  >
-                    Download CV
-                  </a>
-                </div>
-              </div>
-            </section>
-
-            {/* About body */}
-            <section className="mx-auto max-w-5xl px-6 py-16 grid gap-12 lg:grid-cols-[1fr_320px]">
-
-              {/* Left — profile */}
-              <div>
-                <h2 className="text-2xl font-semibold text-slate-900">Profile</h2>
-                <div className="mt-5 space-y-4 text-[15px] leading-7 text-slate-500">
-                  <p>
-                    Mechanical Engineer with 2 years of industry experience in the design and
-                    optimization of aircraft refueling systems. Strong background in fluid dynamics,
-                    mechanical design, and system troubleshooting with experience improving complex
-                    mechanical assemblies.
-                  </p>
-                  <p>
-                    Currently pursuing a Master's degree in Mechanical Engineering at HES-SO Lausanne
-                    to further develop advanced analytical and research capabilities.
-                  </p>
-                  <p>
-                    Outside of work I enjoy 3D printing, electronics projects with Raspberry Pi and
-                    Arduino, soccer, snowboarding, and music.
-                  </p>
-                </div>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <button
-                    onClick={() => go("projects")}
-                    className="text-sm font-medium text-slate-600 underline underline-offset-4 hover:text-slate-900 transition-colors"
-                  >
-                    View projects →
-                  </button>
-                  <button
-                    onClick={() => go("cv")}
-                    className="text-sm font-medium text-slate-600 underline underline-offset-4 hover:text-slate-900 transition-colors"
-                  >
-                    Full CV →
-                  </button>
-                </div>
-              </div>
-
-              {/* Right — info + skills */}
-              <div className="space-y-6">
-                {/* Current status */}
-                <div className="border border-slate-100 rounded-2xl p-6 bg-white shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-                    Current Position
-                  </p>
-                  <p className="mt-2 font-semibold text-slate-900">M.Sc. Student</p>
-                  <p className="text-sm text-slate-500">HES-SO Master · Lausanne</p>
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-emerald-700">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    Active
-                  </span>
-                </div>
-
-                {/* Skills */}
-                <div className="border border-slate-100 rounded-2xl p-6 bg-white shadow-sm space-y-5">
-                  {skills.map((group) => (
-                    <div key={group.group}>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">
-                        {group.group}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {group.items.map((skill) => (
-                          <span
-                            key={skill}
-                            className="text-xs font-medium rounded-md border border-slate-100 bg-slate-50 px-2.5 py-1 text-slate-600"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
+                <div className="grid grid-cols-2 gap-x-12 gap-y-4 content-start text-sm">
+                  {[
+                    ["Status",       "M.Sc. Student — Active"],
+                    ["Location",     "Lausanne, Switzerland"],
+                    ["Previously",   "Design Engineer I, CLA-VAL"],
+                    ["Certified",    "NCEES FE Exam"],
+                  ].map(([label, value]) => (
+                    <div key={label}>
+                      <p className="text-[11px] uppercase tracking-widest text-stone-400 mb-0.5">{label}</p>
+                      <p className="text-stone-700 text-sm">{value}</p>
                     </div>
                   ))}
                 </div>
+              </div>
+
+              <div className="mt-10 flex flex-wrap gap-4">
+                <button
+                  onClick={() => go("contact")}
+                  className="h-10 px-6 bg-stone-900 text-stone-50 text-sm font-medium rounded-full hover:bg-stone-700 transition-colors"
+                >
+                  Get in touch
+                </button>
+                <a
+                  href="/Victor_Garnier_CV.pdf"
+                  className="h-10 px-6 border border-stone-200 text-stone-600 text-sm font-medium rounded-full hover:bg-stone-100 transition-colors flex items-center"
+                >
+                  Download CV
+                </a>
               </div>
             </section>
 
             {/* Stats strip */}
-            <section className="border-t border-slate-100">
-              <div className="mx-auto max-w-5xl px-6 py-10 grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-100">
-                {[
-                  { value: "2 yrs",    label: "Industry experience" },
-                  { value: "GPA 3.58", label: "Bachelor's degree" },
-                  { value: "FE Exam",  label: "NCEES certification" },
-                  { value: "M.Sc.",    label: "HES-SO Lausanne" },
-                ].map((stat) => (
-                  <div key={stat.label} className="px-6 first:pl-0 last:pr-0 py-2">
-                    <p className="text-2xl font-bold text-slate-900">{stat.value}</p>
-                    <p className="mt-1 text-sm text-slate-400">{stat.label}</p>
+            <section className="border-y border-stone-200">
+              <div className="mx-auto max-w-5xl px-6">
+                <div className="flex divide-x divide-stone-200">
+                  {[
+                    { value: "2 yrs",    label: "Industry experience" },
+                    { value: "3.58",     label: "Bachelor's GPA" },
+                    { value: "FE Exam",  label: "NCEES Certified" },
+                    { value: "M.Sc.",    label: "HES-SO Lausanne" },
+                  ].map((s) => (
+                    <div key={s.label} className="flex-1 px-6 py-8 first:pl-0 last:pr-0">
+                      <p className="text-2xl font-semibold text-stone-900">{s.value}</p>
+                      <p className="mt-1 text-xs text-stone-400">{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Skills */}
+            <section className="mx-auto max-w-5xl px-6 py-16">
+              <p className="text-xs font-medium uppercase tracking-[0.25em] text-stone-400 mb-10">
+                Skills
+              </p>
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {skillGroups.map((g) => (
+                  <div key={g.label}>
+                    <p className="text-xs font-medium uppercase tracking-widest text-stone-400 mb-3">
+                      {g.label}
+                    </p>
+                    <ul className="space-y-1.5">
+                      {g.items.map((item) => (
+                        <li key={item} className="text-sm text-stone-600">{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
@@ -353,174 +315,139 @@ export default function Page() {
           </div>
         )}
 
-        {/* ── CV ── */}
+        {/* ═══ CV ═══ */}
         {page === "cv" && (
-          <div className="page-section mx-auto max-w-5xl px-6 py-14 space-y-12">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="slide-up mx-auto max-w-5xl px-6 py-16">
+            <div className="flex items-end justify-between mb-12">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Curriculum Vitae</p>
-                <h2 className="mt-2 text-3xl font-bold text-slate-900">Education & Experience</h2>
+                <p className="text-xs font-medium uppercase tracking-[0.25em] text-stone-400">
+                  Curriculum Vitae
+                </p>
+                <h2 className="mt-2 text-3xl font-bold text-stone-900">
+                  Education & Experience
+                </h2>
               </div>
               <a
                 href="/Victor_Garnier_CV.pdf"
-                className="self-start sm:self-auto border border-slate-200 rounded-lg px-5 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors inline-flex items-center gap-2"
+                className="text-sm text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-4"
               >
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Download PDF
+                Download PDF ↓
               </a>
             </div>
 
-            <div className="grid gap-10 lg:grid-cols-2">
-
-              {/* Education */}
-              <div>
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">Education</h3>
-                <div className="relative space-y-6 before:absolute before:left-[3px] before:top-2 before:bottom-2 before:w-px before:bg-slate-100">
-                  {education.map((item) => (
-                    <div key={item.degree} className="relative pl-6">
-                      <div className="absolute left-0 top-[7px] h-2 w-2 rounded-full bg-blue-600" />
-                      <div>
-                        <div className="flex flex-wrap items-start justify-between gap-2">
-                          <div>
-                            <h4 className="font-semibold text-slate-900">{item.degree}</h4>
-                            <p className="text-sm text-slate-500">{item.school} · {item.location}</p>
-                            {item.note && (
-                              <p className="text-xs text-blue-600 font-medium mt-0.5">{item.note}</p>
-                            )}
-                          </div>
-                          <span className="text-xs font-medium text-slate-400 shrink-0">{item.period}</span>
-                        </div>
-                        <p className="mt-2 text-sm text-slate-400 leading-6">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Certification */}
-                <div className="mt-10">
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">Certification</h3>
-                  <div className="relative pl-6">
-                    <div className="absolute left-0 top-[7px] h-2 w-2 rounded-full bg-violet-500" />
-                    <div className="flex flex-wrap items-start justify-between gap-2">
-                      <div>
-                        <h4 className="font-semibold text-slate-900">NCEES — Fundamentals of Engineering (FE)</h4>
-                        <p className="text-sm text-slate-500">NCEES</p>
-                      </div>
-                      <span className="text-xs font-medium text-slate-400">Completed</span>
-                    </div>
-                    <p className="mt-2 text-sm text-slate-400 leading-6">
-                      First step toward becoming a licensed Professional Engineer. Demonstrates foundational competency across all core engineering disciplines.
+            {/* Document-style table */}
+            <div className="space-y-0">
+              {/* Section headers */}
+              {[
+                {
+                  heading: "Education",
+                  rows: cvRows.slice(0, 2),
+                },
+                {
+                  heading: "Work Experience",
+                  rows: cvRows.slice(2, 5),
+                },
+                {
+                  heading: "Certification",
+                  rows: cvRows.slice(5),
+                },
+              ].map((section) => (
+                <div key={section.heading} className="mb-10">
+                  <div className="flex items-center gap-4 mb-6">
+                    <p className="text-xs font-medium uppercase tracking-[0.25em] text-stone-400 shrink-0">
+                      {section.heading}
                     </p>
+                    <div className="flex-1 h-px bg-stone-200" />
+                  </div>
+                  <div className="space-y-8">
+                    {section.rows.map((row) => (
+                      <div
+                        key={row.title}
+                        className="grid gap-2 md:grid-cols-[180px_1fr]"
+                      >
+                        <div className="pt-0.5">
+                          <p className="text-xs text-stone-400 font-medium">{row.period}</p>
+                          {row.note && (
+                            <p className="text-xs text-stone-400 mt-0.5">{row.note}</p>
+                          )}
+                        </div>
+                        <div>
+                          <h3 className="text-base font-semibold text-stone-900">{row.title}</h3>
+                          <p className="text-sm text-stone-500 mt-0.5">{row.sub}</p>
+                          {row.bullets && row.bullets.length > 0 && (
+                            <ul className="mt-3 space-y-1.5">
+                              {row.bullets.map((b) => (
+                                <li key={b} className="text-sm text-stone-500 leading-6 flex gap-2">
+                                  <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-stone-300" />
+                                  {b}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
-
-              {/* Experience */}
-              <div>
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">Work Experience</h3>
-                <div className="relative space-y-8 before:absolute before:left-[3px] before:top-2 before:bottom-2 before:w-px before:bg-slate-100">
-                  {experience.map((item) => (
-                    <div key={item.title} className="relative pl-6">
-                      <div className="absolute left-0 top-[7px] h-2 w-2 rounded-full bg-slate-400" />
-                      <div>
-                        <div className="flex flex-wrap items-start justify-between gap-2">
-                          <div>
-                            <h4 className="font-semibold text-slate-900">{item.title}</h4>
-                            <p className="text-sm text-slate-500">{item.company}</p>
-                          </div>
-                          <span className="text-xs font-medium text-slate-400 shrink-0">{item.period}</span>
-                        </div>
-                        <ul className="mt-3 space-y-1.5">
-                          {item.bullets.map((b) => (
-                            <li key={b} className="flex items-start gap-2 text-sm text-slate-400 leading-6">
-                              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-300" />
-                              {b}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         )}
 
-        {/* ── PROJECTS ── */}
+        {/* ═══ PROJECTS ═══ */}
         {page === "projects" && (
-          <div className="page-section mx-auto max-w-5xl px-6 py-14 space-y-14">
+          <div className="slide-up mx-auto max-w-5xl px-6 py-16">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-stone-400">Projects</p>
+            <h2 className="mt-2 text-3xl font-bold text-stone-900 mb-12">Selected Work</h2>
 
-            {/* Engineering projects */}
+            {/* Engineering projects — full-width rows */}
             <div>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-8">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Engineering</p>
-                  <h2 className="mt-2 text-3xl font-bold text-slate-900">Projects</h2>
-                </div>
-                <a
-                  href="https://github.com/bots4fun"
-                  className="self-start sm:self-auto text-sm font-medium text-slate-400 hover:text-slate-700 transition-colors underline underline-offset-4"
-                >
-                  View GitHub →
-                </a>
-              </div>
-
-              <div className="grid gap-6 lg:grid-cols-2">
-                {engProjects.map((project) => (
-                  <div
-                    key={project.title}
-                    className="border border-slate-100 rounded-2xl bg-white p-8 shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-start justify-between gap-2 mb-4">
-                      <span className="text-xs font-semibold uppercase tracking-widest text-blue-600">
-                        {project.label}
-                      </span>
-                      <span className="text-xs text-slate-400">{project.period}</span>
-                    </div>
-                    <h3 className="text-xl font-semibold text-slate-900">{project.title}</h3>
-                    <p className="mt-2 text-sm text-slate-500 leading-6">{project.desc}</p>
-                    <ul className="mt-4 space-y-1.5">
-                      {project.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2 text-sm text-slate-400 leading-6">
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-300" />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-6 pt-5 border-t border-slate-50 flex flex-wrap gap-1.5">
-                      {project.tools.map((t) => (
-                        <span key={t} className="text-xs font-medium rounded-md border border-slate-100 bg-slate-50 px-2.5 py-1 text-slate-500">
-                          {t}
+              {projects.map((p, i) => (
+                <div key={p.num}>
+                  {i === 0 && <div className="h-px bg-stone-200" />}
+                  <div className="py-10 grid gap-4 md:grid-cols-[80px_1fr_200px]">
+                    <p className="text-4xl font-bold text-stone-100 select-none leading-none pt-1">
+                      {p.num}
+                    </p>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3 mb-3">
+                        <h3 className="text-xl font-semibold text-stone-900">{p.title}</h3>
+                        <span className="text-xs font-medium text-stone-400 uppercase tracking-wider">
+                          {p.type}
                         </span>
-                      ))}
+                      </div>
+                      <p className="text-sm text-stone-500 leading-6 max-w-xl">{p.desc}</p>
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {p.tools.map((t) => (
+                          <span key={t} className="text-xs text-stone-400">{t}</span>
+                        ))}
+                      </div>
                     </div>
+                    <p className="text-sm text-stone-400 md:text-right">{p.period}</p>
                   </div>
-                ))}
-              </div>
+                  <div className="h-px bg-stone-200" />
+                </div>
+              ))}
             </div>
 
-            {/* 3D Printing gallery */}
-            <div>
-              <div className="mb-8">
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Personal</p>
-                <h2 className="mt-2 text-3xl font-bold text-slate-900">3D Printing</h2>
-                <p className="mt-2 text-sm text-slate-400">
-                  Drop images into <code className="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded">/public/projects/</code> and set the src fields below.
+            {/* 3D printing */}
+            <div className="mt-16">
+              <div className="flex items-center gap-4 mb-8">
+                <p className="text-xs font-medium uppercase tracking-[0.25em] text-stone-400 shrink-0">
+                  3D Printing
+                </p>
+                <div className="flex-1 h-px bg-stone-200" />
+                <p className="text-xs text-stone-400 shrink-0">
+                  Drop images into <code className="font-mono bg-stone-100 px-1 rounded">/public/projects/</code>
                 </p>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {prints.map((item, i) => (
-                  <div
-                    key={i}
-                    className="border border-slate-100 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow group"
-                  >
+                  <div key={i} className="group">
                     {item.src ? (
                       <button
-                        className="relative block w-full h-52 overflow-hidden bg-slate-50"
+                        className="relative block w-full aspect-[4/3] overflow-hidden bg-stone-100"
                         onClick={() => item.src && setLightbox(item.src)}
                       >
                         <Image
@@ -531,15 +458,13 @@ export default function Page() {
                         />
                       </button>
                     ) : (
-                      <div className="flex h-52 items-center justify-center bg-slate-50">
-                        <svg className="h-8 w-8 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
+                      <div className="w-full aspect-[4/3] bg-stone-100 flex items-center justify-center">
+                        <span className="text-xs text-stone-300">No image</span>
                       </div>
                     )}
-                    <div className="p-5 border-t border-slate-50">
-                      <h4 className="text-sm font-semibold text-slate-900">{item.title}</h4>
-                      <p className="text-xs text-slate-400 mt-0.5">{item.desc}</p>
+                    <div className="mt-3">
+                      <p className="text-sm font-medium text-stone-700">{item.title}</p>
+                      <p className="text-xs text-stone-400 mt-0.5">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -548,41 +473,35 @@ export default function Page() {
           </div>
         )}
 
-        {/* ── CONTACT ── */}
+        {/* ═══ CONTACT ═══ */}
         {page === "contact" && (
-          <div className="page-section">
+          <div className="slide-up mx-auto max-w-5xl px-6 py-16">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-stone-400">Contact</p>
 
-            {/* Contact hero — same blob animation */}
-            <section className="relative overflow-hidden bg-slate-50 border-b border-slate-100">
-              <div className="absolute inset-0 pointer-events-none" aria-hidden>
-                <div className="blob absolute -top-16 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-100/50 blur-3xl" />
-                <div className="blob blob-d1 absolute bottom-0 left-1/3 w-[350px] h-[350px] rounded-full bg-indigo-100/40 blur-3xl" />
-              </div>
-              <div className="relative mx-auto max-w-5xl px-6 py-20 md:py-24">
-                <p className="text-sm font-medium text-blue-600 tracking-wide">Contact</p>
-                <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
-                  Let's connect.
-                </h2>
-                <p className="mt-4 max-w-lg text-lg text-slate-500">
-                  Open to engineering positions, research collaborations, and consulting opportunities.
-                </p>
-              </div>
-            </section>
+            <h2
+              className="font-bold text-stone-900 leading-none mt-4 mb-16"
+              style={{ fontSize: "clamp(40px, 6vw, 80px)", letterSpacing: "-0.02em" }}
+            >
+              Let's connect.
+            </h2>
 
-            <section className="mx-auto max-w-5xl px-6 py-16 grid gap-10 lg:grid-cols-[1fr_320px]">
-
-              {/* Contact cards */}
-              <div className="grid gap-3 sm:grid-cols-2 content-start">
+            <div className="grid gap-12 md:grid-cols-[1fr_300px]">
+              {/* Contact items */}
+              <div>
                 {[
-                  { label: "Email",    value: "vgarnier0125@gmail.com",  href: "mailto:vgarnier0125@gmail.com" },
-                  { label: "Phone",    value: "+41 78 601 73 05",        href: "tel:+41786017305" },
-                  { label: "GitHub",   value: "github.com/bots4fun",     href: "https://github.com/bots4fun" },
-                  { label: "Location", value: "Lausanne, Switzerland",   href: null },
-                ].map((item) => {
+                  { label: "Email",    value: "vgarnier0125@gmail.com", href: "mailto:vgarnier0125@gmail.com" },
+                  { label: "Phone",    value: "+41 78 601 73 05",       href: "tel:+41786017305" },
+                  { label: "GitHub",   value: "github.com/bots4fun",    href: "https://github.com/bots4fun" },
+                  { label: "Location", value: "Lausanne, Switzerland",  href: null },
+                ].map((item, i, arr) => {
                   const inner = (
-                    <div className="border border-slate-100 rounded-2xl p-5 bg-white shadow-sm hover:shadow-md hover:border-slate-200 transition-all">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">{item.label}</p>
-                      <p className="mt-1.5 text-sm font-medium text-slate-900">{item.value}</p>
+                    <div className={`py-5 flex items-center justify-between group ${i < arr.length - 1 ? "border-b border-stone-200" : ""}`}>
+                      <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone-400 w-24">
+                        {item.label}
+                      </p>
+                      <p className="text-base text-stone-700 group-hover:text-stone-900 transition-colors flex-1 text-right">
+                        {item.value}
+                      </p>
                     </div>
                   );
                   return item.href
@@ -592,42 +511,43 @@ export default function Page() {
               </div>
 
               {/* Open to */}
-              <div className="border border-slate-100 rounded-2xl p-7 bg-white shadow-sm self-start">
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-5">Open to</p>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.25em] text-stone-400 mb-6">
+                  Open to
+                </p>
                 <ul className="space-y-3">
                   {[
                     "Mechanical design & engineering roles",
                     "Fluid systems and hydraulics projects",
-                    "R&D and simulation-driven work",
-                    "3D printing and prototyping",
+                    "R&D and simulation-driven positions",
+                    "3D printing and prototyping work",
                     "Embedded systems side projects",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-slate-600">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
+                    <li key={item} className="text-sm text-stone-500 leading-6">
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 pt-5 border-t border-slate-50 space-y-1.5 text-sm text-slate-400">
-                  <p>Based in Lausanne, Switzerland</p>
-                  <p>French & English speaker</p>
+                <div className="mt-8 pt-6 border-t border-stone-200 space-y-1 text-xs text-stone-400">
+                  <p>Lausanne, Switzerland</p>
+                  <p>French & English</p>
                 </div>
               </div>
-            </section>
+            </div>
           </div>
         )}
-      </main>
+      </div>
 
       {/* ── FOOTER ── */}
-      <footer className="border-t border-slate-100 bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-slate-400">© 2026 Victor Garnier</p>
+      <footer className="relative z-20 border-t border-stone-200 mt-8">
+        <div className="mx-auto max-w-5xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-stone-400">© 2026 Victor Garnier — Mechanical Engineer</p>
           <div className="flex items-center gap-6">
             {nav.map((item) => (
               <button
                 key={item.id}
                 onClick={() => go(item.id)}
-                className="text-sm text-slate-400 hover:text-slate-700 transition-colors"
+                className="text-xs text-stone-400 hover:text-stone-700 transition-colors"
               >
                 {item.label}
               </button>

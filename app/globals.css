@@ -5,27 +5,16 @@
   --font-mono: var(--font-geist-mono);
 }
 
-html,
-body {
-  background-color: #ffffff;
-  color: #0f172a;
+html, body {
+  background-color: #fafaf9;
+  color: #1c1917;
 }
 
-/* Slow floating blob animation for hero background */
-@keyframes blob {
-  0%   { transform: translate(0px,   0px)   scale(1);    }
-  33%  { transform: translate(30px, -40px)  scale(1.08); }
-  66%  { transform: translate(-20px, 18px)  scale(0.95); }
-  100% { transform: translate(0px,   0px)   scale(1);    }
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-.blob { animation: blob 9s ease-in-out infinite; }
-.blob-d1 { animation-delay: 3s; }
-.blob-d2 { animation-delay: 6s; }
-
-/* Page-section fade-in */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0);    }
-}
-.page-section { animation: fade-up 0.35s ease-out; }
+.slide-up { animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.slide-up-d1 { animation-delay: 0.07s; }
+.slide-up-d2 { animation-delay: 0.14s; }
+.slide-up-d3 { animation-delay: 0.21s; }
