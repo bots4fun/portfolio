@@ -35,7 +35,7 @@ const skillGroups = [
   {
     label: "Software",
     color: "bg-violet-500/10 text-violet-300 border-violet-500/20",
-    items: ["SolidWorks", "3D Experience", "MATLAB", "FEMAP", "Python"],
+    items: ["SolidWorks", "3D Experience", "Fusion 360", "Python"],
   },
   {
     label: "Hardware",
@@ -54,7 +54,7 @@ const education = [
     degree:   "Master's in Mechanical Engineering",
     school:   "HES-SO Master · Lausanne, Switzerland",
     period:   "2025 – Present",
-    desc:     "Advanced study in design, simulation, and applied mechanics. Deepening analytical and research capabilities.",
+    desc:     "Advanced study in product development and design, production of components and systems, materials and manufacturing techniques. Focus on mechanical and mechatronic systems, including their control and automation and in-depth skills in simulation, analysis, optimization and validation.",
   },
   {
     degree:   "Bachelor's in Mechanical Engineering",
@@ -71,7 +71,7 @@ const experience = [
     company: "Griswold Industries DBA CLA-VAL",
     period:  "2023 – 2025",
     bullets: [
-      "Designed and optimized components for aircraft refueling systems — nozzles, inline valves, couplers.",
+      "Designed and optimized components for aircraft refueling systems such as nozzles, inline valves, and couplers.",
       "Collaborated with engineering and sales teams to develop new products based on customer requirements.",
       "Developed and executed testing procedures ensuring compliance with industry standards.",
       "Designed custom testing fixtures to streamline product validation.",
@@ -108,7 +108,7 @@ const projects = [
     title:  "NGCP Payload System — UGV",
     period: "2022 – 2023",
     desc:   "Designed and manufactured a complete payload system for an Unmanned Ground Vehicle for the NGCP competition. Integrated with a multidisciplinary team across the full development cycle.",
-    tools:  ["SolidWorks", "MATLAB", "FEMAP", "3D Printing"],
+    tools:  ["SolidWorks", "FEA", "3D Printing", "Analysis", "Teamwork"],
   },
   {
     num:    "02",
