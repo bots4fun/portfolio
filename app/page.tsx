@@ -102,9 +102,16 @@ const personalProjects: Project[] = [
 // ─── PAGE ─────────────────────────────────────────────────────────────────
 
 export default function Page() {
-  const [mob, setMob] = useState(false);
-  const [lb, setLb]   = useState<string | null>(null);
-  const mainRef       = useRef<HTMLDivElement>(null);
+  const [mob, setMob]       = useState(false);
+  const [lb, setLb]         = useState<string | null>(null);
+  const [imgIdx, setImgIdx] = useState<Record<string, number>>({});
+  const mainRef             = useRef<HTMLDivElement>(null);
+
+  const getIdx = (key: string) => imgIdx[key] ?? 0;
+  const prev = (key: string, len: number) =>
+    setImgIdx(s => ({ ...s, [key]: (getIdx(key) - 1 + len) % len }));
+  const next = (key: string, len: number) =>
+    setImgIdx(s => ({ ...s, [key]: (getIdx(key) + 1) % len }));
 
   // Scroll-triggered reveal
   useEffect(() => {
@@ -383,13 +390,13 @@ export default function Page() {
                   Native French speaker, fluent English.
                 </p>
                 <p>
-                  Outside of engineering, I enjoy{" "}
-                  <span className="text-[hsl(40,15%,82%)] font-medium">3D printing</span> and building electronics projects,
-                  playing and watching{" "}
+                  Some of the hobbies I enjoy include{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium">3D printing</span> anything and everything from simple stands to complex mechanical devices,
+                  playing, watching and discussing about{" "}
                   <span className="text-[hsl(40,15%,82%)] font-medium">soccer</span>,{" "}
-                  <span className="text-[hsl(40,15%,82%)] font-medium">snowboarding</span> in the Alps when the season allows,
-                  and listening to{" "}
-                  <span className="text-[hsl(40,15%,82%)] font-medium">music</span> — a good soundtrack for long design sessions.
+                  <span className="text-[hsl(40,15%,82%)] font-medium">snowboarding</span> when the weather allows it is my favorite winter sport,
+                  and listening to or playing{" "}
+                  <span className="text-[hsl(40,15%,82%)] font-medium">music</span> as I believe there is nothing better than your favorite song to give you that extra boost of energy and motivation to power through a long day of work or study.
                 </p>
               </div>
 
@@ -465,18 +472,36 @@ export default function Page() {
                     <article key={p.num}
                       className={`project-card reveal reveal-delay-${(idx % 3) + 1} card-hover flex flex-col rounded-2xl border border-white/[0.07] bg-white/[0.03] overflow-hidden`}>
 
-                      {p.images && p.images.length > 0 && (
-                        <div className="flex gap-0 overflow-x-auto scrollbar-none">
-                          {p.images.map((src, i) => (
-                            <button key={i} onClick={() => setLb(src)}
-                              className="relative shrink-0 w-full bg-[hsl(220,20%,8%)] flex items-center justify-center p-4 img-zoom"
-                              style={{ minWidth: p.images!.length > 1 ? "60%" : "100%" }}>
-                              <img src={src} alt={`${p.title} ${i+1}`}
+                      {p.images && p.images.length > 0 && (() => {
+                        const key = `${section.heading}-${p.num}`;
+                        const idx = getIdx(key);
+                        const len = p.images.length;
+                        return (
+                          <div className="relative bg-[hsl(220,20%,8%)] flex items-center justify-center p-4 img-zoom group">
+                            <button onClick={() => setLb(p.images![idx])} className="w-full flex items-center justify-center">
+                              <img src={p.images[idx]} alt={`${p.title} ${idx + 1}`}
                                 className="w-full h-auto max-h-52 object-contain" />
                             </button>
-                          ))}
-                        </div>
-                      )}
+                            {len > 1 && (
+                              <>
+                                <button
+                                  onClick={e => { e.stopPropagation(); prev(key, len); }}
+                                  className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 text-sm"
+                                >‹</button>
+                                <button
+                                  onClick={e => { e.stopPropagation(); next(key, len); }}
+                                  className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 text-sm"
+                                >›</button>
+                                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                                  {p.images.map((_, i) => (
+                                    <span key={i} className={`h-1 rounded-full transition-all ${i === idx ? "w-4 bg-[hsl(28,100%,60%)]" : "w-1 bg-white/30"}`} />
+                                  ))}
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        );
+                      })()}
 
                       <div className="p-6 flex flex-col flex-1">
                         <div className="flex items-center justify-between mb-4">
