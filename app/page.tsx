@@ -111,7 +111,7 @@ const workProjects: Project[] = [
     label:  "CLA-VAL",
     color:  "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
     title:  "Manifold — Pilot Block",
-    period: "2023 – 2025",
+    period: "2025",
     desc:   "Aluminum hog-out manifold used to control the piston of a main valve via solenoids and pressure regulators, allowing or restricting flow in the system.",
     tools:  ["SolidWorks", "GD&T", "Aluminum Machining", "Fluid Systems"],
     images: ["/projects/manifold-3d.png"],
