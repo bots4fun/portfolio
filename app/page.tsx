@@ -100,7 +100,11 @@ const experience = [
   },
 ];
 
-const workProjects = [
+const workProjects: { num: string; label: string; color: string; title: string; period: string; desc: string; tools: string[] }[] = [
+  // Add professional/industry projects here
+];
+
+const academicProjects = [
   {
     num:    "01",
     label:  "Academic",
@@ -122,15 +126,15 @@ const personalProjects = [
     desc:   "Designed and built a custom door lock mechanism combining Arduino control logic with 3D-printed mechanical components — concept to working prototype.",
     tools:  ["Arduino", "3D Printing", "CAD", "Embedded Systems"],
   },
-];
-
-const prints: { title: string; desc: string; src: string | null }[] = [
-  { title: "Project 1", desc: "Short description.", src: null },
-  { title: "Project 2", desc: "Short description.", src: null },
-  { title: "Project 3", desc: "Short description.", src: null },
-  { title: "Project 4", desc: "Short description.", src: null },
-  { title: "Project 5", desc: "Short description.", src: null },
-  { title: "Project 6", desc: "Short description.", src: null },
+  {
+    num:    "02",
+    label:  "Personal",
+    color:  "bg-amber-500/10 text-amber-300 border-amber-500/20",
+    title:  "3D Printing Projects",
+    period: "Ongoing",
+    desc:   "Designing and printing mechanical parts, enclosures, and functional prototypes. Each project covers the full loop from CAD model to physical object.",
+    tools:  ["3D Printing", "CAD", "Fusion 360", "Prototyping"],
+  },
 ];
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────
@@ -609,113 +613,46 @@ export default function Page() {
             </a>
           </div>
 
-          {/* Previous Work Projects */}
-          <div className="mb-14">
-            <div className="flex items-center gap-4 mb-7">
-              <p className="text-xs font-medium text-[hsl(215,15%,40%)] uppercase tracking-widest shrink-0">
-                Previous Work Projects
-              </p>
-              <div className="flex-1 h-px bg-[hsl(222,25%,16%)]" />
-            </div>
-            <div className="grid gap-5 md:grid-cols-2">
-              {workProjects.map((p) => (
-                <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-7 flex flex-col`}>
-                  <div className="flex items-start justify-between mb-5">
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
-                      {p.label}
-                    </span>
-                    <span className="text-3xl font-black text-[hsl(222,25%,18%)] select-none leading-none">
-                      {p.num}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-3">{p.title}</h3>
-                  <p className="text-sm text-[hsl(215,15%,55%)] leading-6 flex-1">{p.desc}</p>
-                  <div className="mt-6 pt-5 border-t border-[hsl(222,25%,16%)] flex flex-wrap gap-2">
-                    {p.tools.map((t) => (
-                      <span key={t} className="text-xs text-[hsl(215,15%,50%)] font-medium">{t}</span>
-                    ))}
-                  </div>
-                  <p className="mt-2 text-xs text-[hsl(215,15%,38%)]">{p.period}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          {/* Personal Projects */}
-          <div className="mb-16">
-            <div className="flex items-center gap-4 mb-7">
-              <p className="text-xs font-medium text-[hsl(215,15%,40%)] uppercase tracking-widest shrink-0">
-                Personal Projects
-              </p>
-              <div className="flex-1 h-px bg-[hsl(222,25%,16%)]" />
-            </div>
-            <div className="grid gap-5 md:grid-cols-2">
-              {personalProjects.map((p) => (
-                <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-7 flex flex-col`}>
-                  <div className="flex items-start justify-between mb-5">
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
-                      {p.label}
-                    </span>
-                    <span className="text-3xl font-black text-[hsl(222,25%,18%)] select-none leading-none">
-                      {p.num}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-3">{p.title}</h3>
-                  <p className="text-sm text-[hsl(215,15%,55%)] leading-6 flex-1">{p.desc}</p>
-                  <div className="mt-6 pt-5 border-t border-[hsl(222,25%,16%)] flex flex-wrap gap-2">
-                    {p.tools.map((t) => (
-                      <span key={t} className="text-xs text-[hsl(215,15%,50%)] font-medium">{t}</span>
-                    ))}
-                  </div>
-                  <p className="mt-2 text-xs text-[hsl(215,15%,38%)]">{p.period}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          {/* 3D Printing */}
-          <div>
-            <div className="flex items-center gap-4 mb-8">
-              <p className="text-xs font-medium text-[hsl(215,15%,40%)] uppercase tracking-widest shrink-0">
-                3D Printing
-              </p>
-              <div className="flex-1 h-px bg-[hsl(222,25%,16%)]" />
-              <p className="text-xs text-[hsl(215,15%,35%)] shrink-0">
-                Add images to <code className="font-mono bg-[hsl(222,28%,14%)] px-1 py-0.5 rounded">/public/projects/</code>
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {prints.map((item, i) => (
-                <div key={i} className={`glow-card rounded-2xl border ${C.border} overflow-hidden ${C.card}`}>
-                  {item.src ? (
-                    <button
-                      className="relative block w-full aspect-[4/3] overflow-hidden"
-                      onClick={() => item.src && setLb(item.src)}
-                    >
-                      <Image
-                        src={item.src}
-                        alt={item.title}
-                        fill
-                        className="object-cover hover:scale-105 transition-transform duration-500"
-                      />
-                    </button>
-                  ) : (
-                    <div className="aspect-[4/3] bg-[hsl(222,28%,9%)] flex flex-col items-center justify-center gap-2">
-                      <svg className="h-8 w-8 text-[hsl(215,15%,22%)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <p className="text-xs text-[hsl(215,15%,28%)]">No image yet</p>
-                    </div>
-                  )}
-                  <div className="p-4">
-                    <p className="text-sm font-semibold text-white">{item.title}</p>
-                    <p className="text-xs text-[hsl(215,15%,50%)] mt-0.5">{item.desc}</p>
-                  </div>
+          {[
+            { heading: "Work Projects",     items: workProjects },
+            { heading: "Academic Projects", items: academicProjects },
+            { heading: "Personal Projects", items: personalProjects },
+          ].map((section) => (
+            <div key={section.heading} className="mb-14">
+              <div className="flex items-center gap-4 mb-7">
+                <p className="text-xs font-medium text-[hsl(215,15%,40%)] uppercase tracking-widest shrink-0">
+                  {section.heading}
+                </p>
+                <div className="flex-1 h-px bg-[hsl(222,25%,16%)]" />
+              </div>
+              {section.items.length === 0 ? (
+                <p className="text-sm text-[hsl(215,15%,38%)] italic">Coming soon.</p>
+              ) : (
+                <div className="grid gap-5 md:grid-cols-2">
+                  {section.items.map((p) => (
+                    <article key={p.num} className={`glow-card rounded-2xl border ${C.border} ${C.card} p-7 flex flex-col`}>
+                      <div className="flex items-start justify-between mb-5">
+                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${p.color}`}>
+                          {p.label}
+                        </span>
+                        <span className="text-3xl font-black text-[hsl(222,25%,18%)] select-none leading-none">
+                          {p.num}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-semibold text-white mb-3">{p.title}</h3>
+                      <p className="text-sm text-[hsl(215,15%,55%)] leading-6 flex-1">{p.desc}</p>
+                      <div className="mt-6 pt-5 border-t border-[hsl(222,25%,16%)] flex flex-wrap gap-2">
+                        {p.tools.map((t) => (
+                          <span key={t} className="text-xs text-[hsl(215,15%,50%)] font-medium">{t}</span>
+                        ))}
+                      </div>
+                      <p className="mt-2 text-xs text-[hsl(215,15%,38%)]">{p.period}</p>
+                    </article>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
-          </div>
+          ))}
         </div>
       )}
 
